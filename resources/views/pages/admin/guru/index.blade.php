@@ -5,51 +5,68 @@
 @endsection
 
 @section('content')
-<main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Guru</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-          <li class="breadcrumb-item active">Guru</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">
-                <a href="{{route('guru.create')}}" class="btn btn-primary">Tambah Guru</a>
-              </h5>
-
-              <!-- Default Table -->
-              <table class="table" id="guru">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Unit</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-              <!-- End small tables -->
-
-            </div>
+  <main id="main-container">
+    <!-- Hero -->
+    <div class="bg-body-light">
+      <div class="content content-full">
+        <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+          <div class="flex-grow-1">
+            <h1 class="h3 fw-bold mb-2">
+              Guru
+            </h1>
           </div>
-
+          <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-alt">
+              <li class="breadcrumb-item">
+                <a class="link-fx" href="{{route('guru.index')}}">Guru</a>
+              </li>
+              <li class="breadcrumb-item" aria-current="page">
+                Responsive
+              </li>
+            </ol>
+          </nav>
         </div>
       </div>
-    </section>
+    </div>
+    <!-- END Hero -->
 
-  </main><!-- End #main -->
+    <!-- Page Content -->
+    <div class="content">
+      <!-- Full Table -->
+      <div class="block block-rounded">
+        <div class="block-header block-header-default">
+          <h3 class="block-title">
+            <a href="{{route('guru.create')}}" class="btn btn-primary">Tambah Guru</a>
+          </h3>
+          <div class="block-options">
+            <button type="button" class="btn-block-option">
+              <i class="si si-settings"></i>
+            </button>
+          </div>
+        </div>
+        <div class="block-content">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-vcenter" id="guru">
+              <thead>
+                <tr>
+                  <th class="text-center" style="width: 100px;">
+                    <i class="far fa-number"></i>
+                  </th>
+                  <th>Nama</th>
+                  <th>Unit</th>
+                  <th>Email</th>
+                  <th style="width: 30%;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- END Full Table -->
+    </div>
+    <!-- END Page Content -->
+  </main>
   @include('sweetalert::alert')
 @endsection
 

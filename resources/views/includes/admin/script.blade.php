@@ -1,12 +1,13 @@
-<!-- Vendor JS Files -->
-<script src="{{url('belakang/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
-<script src="{{url('belakang/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{url('belakang/assets/vendor/chart.js/chart.umd.js')}}"></script>
-<script src="{{url('belakang/assets/vendor/echarts/echarts.min.js')}}"></script>
-<script src="{{url('belakang/assets/vendor/quill/quill.js')}}"></script>
-<script src="{{url('belakang/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
-<script src="{{url('belakang/assets/vendor/tinymce/tinymce.min.js')}}"></script>
-<script src="{{url('belakang/assets/vendor/php-email-form/validate.js')}}"></script>
+<!--
+        OneUI JS
 
-<!-- Template Main JS File -->
-<script src="{{url('belakang/assets/js/main.js')}}"></script>
+        Core libraries and functionality
+        webpack is putting everything together at assets/_js/main/app.js
+    -->
+    <script src="{{url('dashboard/src/assets/js/oneui.app.min.js')}}"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="{{url('dashboard/src/assets/js/plugins/chart.js/chart.min.js')}}"></script>
+
+    <!-- Page JS Code -->
+    <script src="{{url('dashboard/src/assets/js/pages/be_pages_dashboard.min.js')}}"></script>

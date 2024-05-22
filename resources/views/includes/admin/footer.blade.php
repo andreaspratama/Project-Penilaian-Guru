@@ -1,13 +1,14 @@
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+<!-- Footer -->
+<footer id="page-footer" class="bg-body-light">
+  <div class="content py-3">
+    <div class="row fs-sm">
+      <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
+        Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
+      </div>
+      <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
+        <a class="fw-semibold" href="https://1.envato.market/AVD6j" target="_blank">OneUI 5.5</a> &copy; <span data-toggle="year-copy"></span>
+      </div>
     </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
+  </div>
+</footer>
+<!-- END Footer -->

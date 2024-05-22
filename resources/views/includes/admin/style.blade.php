@@ -1,19 +1,14 @@
-<!-- Favicons -->
-<link href="{{url('belakang/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{url('belakang/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+<!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="{{url('dashboard/src/assets/media/favicons/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{url('dashboard/src/assets/media/favicons/favicon-192x192.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url('dashboard/src/assets/media/favicons/apple-touch-icon-180x180.png')}}">
+    <!-- END Icons -->
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Stylesheets -->
+    <!-- OneUI framework -->
+    <link rel="stylesheet" id="css-main" href="{{url('dashboard/src/assets/css/oneui.min.css')}}">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{url('belakang/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{url('belakang/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{url('belakang/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{url('belakang/assets/vendor/quill/quill.snow.css')}}" rel="stylesheet">
-  <link href="{{url('belakang/assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
-  <link href="{{url('belakang/')}}assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="{{url('belakang/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{{url('belakang/assets/css/style.css')}}" rel="stylesheet">
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
+    <!-- END Stylesheets -->

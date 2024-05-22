@@ -16,4 +16,9 @@ class Penilai extends Model
     {
         return $this->belongsTo(Unit::class);
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

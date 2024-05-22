@@ -5,651 +5,512 @@
 @endsection
 
 @section('content')
-<main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section dashboard">
-      <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- End Customers Card -->
-
-            <!-- Reports -->
-            <div class="col-12">
-              <div class="card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                  <!-- Line Chart -->
-                  <div id="reportsChart"></div>
-
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
-
-                </div>
-
-              </div>
-            </div><!-- End Reports -->
-
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Recent Sales -->
-
-            <!-- Top Selling -->
-            <div class="col-12">
-              <div class="card top-selling overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Top Selling -->
-
-          </div>
-        </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-
-          <!-- Recent Activity -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-              <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                  </div>
-                </div><!-- End activity item-->
-
-              </div>
-
-            </div>
-          </div><!-- End Recent Activity -->
-
-          <!-- Budget Report -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
-              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                    legend: {
-                      data: ['Allocated Budget', 'Actual Spending']
-                    },
-                    radar: {
-                      // shape: 'circle',
-                      indicator: [{
-                          name: 'Sales',
-                          max: 6500
-                        },
-                        {
-                          name: 'Administration',
-                          max: 16000
-                        },
-                        {
-                          name: 'Information Technology',
-                          max: 30000
-                        },
-                        {
-                          name: 'Customer Support',
-                          max: 38000
-                        },
-                        {
-                          name: 'Development',
-                          max: 52000
-                        },
-                        {
-                          name: 'Marketing',
-                          max: 25000
-                        }
-                      ]
-                    },
-                    series: [{
-                      name: 'Budget vs spending',
-                      type: 'radar',
-                      data: [{
-                          value: [4200, 3000, 20000, 35000, 50000, 18000],
-                          name: 'Allocated Budget'
-                        },
-                        {
-                          value: [5000, 14000, 28000, 26000, 42000, 21000],
-                          name: 'Actual Spending'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Budget Report -->
-
-          <!-- Website Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Website Traffic -->
-
-          <!-- News & Updates Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-              <div class="news">
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-2.jpg" alt="">
-                  <h4><a href="#">Quidem autem et impedit</a></h4>
-                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-3.jpg" alt="">
-                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-4.jpg" alt="">
-                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-5.jpg" alt="">
-                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-            </div>
-          </div><!-- End News & Updates -->
-
-        </div><!-- End Right side columns -->
-
+  <!-- Main Container -->
+  <main id="main-container">
+    <!-- Hero -->
+    <div class="content">
+      <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center py-2 text-center text-md-start">
+        <div class="flex-grow-1 mb-1 mb-md-0">
+          <h1 class="h3 fw-bold mb-2">
+            Dashboard
+          </h1>
+          <h2 class="h6 fw-medium fw-medium text-muted mb-0">
+            Welcome <a class="fw-semibold" href="be_pages_generic_profile.html">John</a>, everything looks great.
+          </h2>
+        </div>
       </div>
-    </section>
+    </div>
+    <!-- END Hero -->
 
-  </main><!-- End #main -->
+    <!-- Page Content -->
+    <div class="content">
+      <!-- Overview -->
+      <div class="row items-push">
+        <div class="col-sm-6 col-xxl-3">
+          <!-- Pending Orders -->
+          <div class="block block-rounded d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full flex-grow-1 d-flex justify-content-between align-items-center">
+              <dl class="mb-0">
+                <dt class="fs-3 fw-bold">32</dt>
+                <dd class="fs-sm fw-medium fs-sm fw-medium text-muted mb-0">Pending Orders</dd>
+              </dl>
+              <div class="item item-rounded-lg bg-body-light">
+                <i class="far fa-gem fs-3 text-primary"></i>
+              </div>
+            </div>
+            <div class="bg-body-light rounded-bottom">
+              <a class="block-content block-content-full block-content-sm fs-sm fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                <span>View all orders</span>
+                <i class="fa fa-arrow-alt-circle-right ms-1 opacity-25 fs-base"></i>
+              </a>
+            </div>
+          </div>
+          <!-- END Pending Orders -->
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+          <!-- New Customers -->
+          <div class="block block-rounded d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full flex-grow-1 d-flex justify-content-between align-items-center">
+              <dl class="mb-0">
+                <dt class="fs-3 fw-bold">124</dt>
+                <dd class="fs-sm fw-medium fs-sm fw-medium text-muted mb-0">New Customers</dd>
+              </dl>
+              <div class="item item-rounded-lg bg-body-light">
+                <i class="far fa-user-circle fs-3 text-primary"></i>
+              </div>
+            </div>
+            <div class="bg-body-light rounded-bottom">
+              <a class="block-content block-content-full block-content-sm fs-sm fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                <span>View all customers</span>
+                <i class="fa fa-arrow-alt-circle-right ms-1 opacity-25 fs-base"></i>
+              </a>
+            </div>
+          </div>
+          <!-- END New Customers -->
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+          <!-- Messages -->
+          <div class="block block-rounded d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full flex-grow-1 d-flex justify-content-between align-items-center">
+              <dl class="mb-0">
+                <dt class="fs-3 fw-bold">45</dt>
+                <dd class="fs-sm fw-medium fs-sm fw-medium text-muted mb-0">Messages</dd>
+              </dl>
+              <div class="item item-rounded-lg bg-body-light">
+                <i class="far fa-paper-plane fs-3 text-primary"></i>
+              </div>
+            </div>
+            <div class="bg-body-light rounded-bottom">
+              <a class="block-content block-content-full block-content-sm fs-sm fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                <span>View all messages</span>
+                <i class="fa fa-arrow-alt-circle-right ms-1 opacity-25 fs-base"></i>
+              </a>
+            </div>
+          </div>
+          <!-- END Messages -->
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+          <!-- Conversion Rate -->
+          <div class="block block-rounded d-flex flex-column h-100 mb-0">
+            <div class="block-content block-content-full flex-grow-1 d-flex justify-content-between align-items-center">
+              <dl class="mb-0">
+                <dt class="fs-3 fw-bold">4.5%</dt>
+                <dd class="fs-sm fw-medium fs-sm fw-medium text-muted mb-0">Conversion Rate</dd>
+              </dl>
+              <div class="item item-rounded-lg bg-body-light">
+                <i class="fa fa-chart-bar fs-3 text-primary"></i>
+              </div>
+            </div>
+            <div class="bg-body-light rounded-bottom">
+              <a class="block-content block-content-full block-content-sm fs-sm fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                <span>View statistics</span>
+                <i class="fa fa-arrow-alt-circle-right ms-1 opacity-25 fs-base"></i>
+              </a>
+            </div>
+          </div>
+          <!-- END Conversion Rate-->
+        </div>
+      </div>
+      <!-- END Overview -->
+
+      <!-- Statistics -->
+      <div class="row">
+        <div class="col-xl-8 col-xxl-9 d-flex flex-column">
+          <!-- Earnings Summary -->
+          <div class="block block-rounded flex-grow-1 d-flex flex-column">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">Earnings Summary</h3>
+              <div class="block-options">
+                <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                  <i class="si si-refresh"></i>
+                </button>
+                <button type="button" class="btn-block-option">
+                  <i class="si si-settings"></i>
+                </button>
+              </div>
+            </div>
+            <div class="block-content block-content-full flex-grow-1 d-flex align-items-center">
+              <!-- Earnings Chart Container -->
+              <!-- Chart.js Chart is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _js/pages/be_pages_dashboard.js -->
+              <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
+              <canvas id="js-chartjs-earnings"></canvas>
+            </div>
+            <div class="block-content bg-body-light">
+              <div class="row items-push text-center w-100">
+                <div class="col-sm-4">
+                  <dl class="mb-0">
+                    <dt class="fs-3 fw-bold d-inline-flex align-items-center space-x-2">
+                      <i class="fa fa-caret-up fs-base text-success"></i>
+                      <span>2.5%</span>
+                    </dt>
+                    <dd class="fs-sm fw-medium text-muted mb-0">Customer Growth</dd>
+                  </dl>
+                </div>
+                <div class="col-sm-4">
+                  <dl class="mb-0">
+                    <dt class="fs-3 fw-bold d-inline-flex align-items-center space-x-2">
+                      <i class="fa fa-caret-up fs-base text-success"></i>
+                      <span>3.8%</span>
+                    </dt>
+                    <dd class="fs-sm fw-medium text-muted mb-0">Page Views</dd>
+                  </dl>
+                </div>
+                <div class="col-sm-4">
+                  <dl class="mb-0">
+                    <dt class="fs-3 fw-bold d-inline-flex align-items-center space-x-2">
+                      <i class="fa fa-caret-down fs-base text-danger"></i>
+                      <span>1.7%</span>
+                    </dt>
+                    <dd class="fs-sm fw-medium text-muted mb-0">New Products</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END Earnings Summary -->
+        </div>
+        <div class="col-xl-4 col-xxl-3 d-flex flex-column">
+          <!-- Last 2 Weeks -->
+          <!-- Chart.js Charts is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _js/pages/be_pages_dashboard.js -->
+          <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
+          <div class="row items-push flex-grow-1">
+            <div class="col-md-6 col-xl-12">
+              <div class="block block-rounded d-flex flex-column h-100 mb-0">
+                <div class="block-content flex-grow-1 d-flex justify-content-between">
+                  <dl class="mb-0">
+                    <dt class="fs-3 fw-bold">570</dt>
+                    <dd class="fs-sm fw-medium text-muted mb-0">Total Orders</dd>
+                  </dl>
+                  <div>
+                    <div class="d-inline-block px-2 py-1 rounded-3 fs-xs fw-semibold text-danger bg-danger-light">
+                      <i class="fa fa-caret-down me-1"></i>
+                      2.2%
+                    </div>
+                  </div>
+                </div>
+                <div class="block-content p-1 text-center overflow-hidden">
+                  <!-- Total Orders Chart Container -->
+                  <canvas id="js-chartjs-total-orders" style="height: 90px;"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-12">
+              <div class="block block-rounded d-flex flex-column h-100 mb-0">
+                <div class="block-content flex-grow-1 d-flex justify-content-between">
+                  <dl class="mb-0">
+                    <dt class="fs-3 fw-bold">$5,234.21</dt>
+                    <dd class="fs-sm fw-medium text-muted mb-0">Total Earnings</dd>
+                  </dl>
+                  <div>
+                    <div class="d-inline-block px-2 py-1 rounded-3 fs-xs fw-semibold text-success bg-success-light">
+                      <i class="fa fa-caret-up me-1"></i>
+                      4.2%
+                    </div>
+                  </div>
+                </div>
+                <div class="block-content p-1 text-center overflow-hidden">
+                  <!-- Total Earnings Chart Container -->
+                  <canvas id="js-chartjs-total-earnings" style="height: 90px;"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-12">
+              <div class="block block-rounded d-flex flex-column h-100 mb-0">
+                <div class="block-content flex-grow-1 d-flex justify-content-between">
+                  <dl class="mb-0">
+                    <dt class="fs-3 fw-bold">264</dt>
+                    <dd class="fs-sm fw-medium text-muted mb-0">New Customers</dd>
+                  </dl>
+                  <div>
+                    <div class="d-inline-block px-2 py-1 rounded-3 fs-xs fw-semibold text-success bg-success-light">
+                      <i class="fa fa-caret-up me-1"></i>
+                      9.3%
+                    </div>
+                  </div>
+                </div>
+                <div class="block-content p-1 text-center overflow-hidden">
+                  <!-- New Customers Chart Container -->
+                  <canvas id="js-chartjs-new-customers" style="height: 90px;"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END Last 2 Weeks -->
+        </div>
+      </div>
+      <!-- END Statistics -->
+
+      <!-- Recent Orders -->
+      <div class="block block-rounded">
+        <div class="block-header block-header-default">
+          <h3 class="block-title">Recent Orders</h3>
+          <div class="block-options space-x-1">
+            <button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="class-toggle" data-target="#one-dashboard-search-orders" data-class="d-none">
+              <i class="fa fa-search"></i>
+            </button>
+            <div class="dropdown d-inline-block">
+              <button type="button" class="btn btn-sm btn-alt-secondary" id="dropdown-recent-orders-filters" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-fw fa-flask"></i>
+                Filters
+                <i class="fa fa-angle-down ms-1"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-md dropdown-menu-end fs-sm" aria-labelledby="dropdown-recent-orders-filters">
+                <a class="dropdown-item fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                  Pending
+                  <span class="badge bg-primary rounded-pill">20</span>
+                </a>
+                <a class="dropdown-item fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                  Active
+                  <span class="badge bg-primary rounded-pill">72</span>
+                </a>
+                <a class="dropdown-item fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                  Completed
+                  <span class="badge bg-primary rounded-pill">890</span>
+                </a>
+                <a class="dropdown-item fw-medium d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                  All
+                  <span class="badge bg-primary rounded-pill">997</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="one-dashboard-search-orders" class="block-content border-bottom d-none">
+          <!-- Search Form -->
+          <form action="be_pages_dashboard.html" method="POST" onsubmit="return false;">
+            <div class="push">
+              <div class="input-group">
+                <input type="text" class="form-control form-control-alt" id="one-ecom-orders-search" name="one-ecom-orders-search" placeholder="Search all orders..">
+                <span class="input-group-text bg-body border-0">
+                  <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </div>
+          </form>
+          <!-- END Search Form -->
+        </div>
+        <div class="block-content block-content-full">
+          <!-- Recent Orders Table -->
+          <div class="table-responsive">
+            <table class="table table-hover table-vcenter">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th class="d-none d-xl-table-cell">Customer</th>
+                  <th>Status</th>
+                  <th class="d-none d-sm-table-cell text-center">Profit</th>
+                  <th class="d-none d-sm-table-cell text-end">Created</th>
+                  <th class="d-none d-sm-table-cell text-end">Value</th>
+                </tr>
+              </thead>
+              <tbody class="fs-sm">
+                <tr>
+                  <td>
+                    <a class="fw-semibold" href="javascript:void(0)">
+                      ORD.00925                  </a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Premium</p>
+                  </td>
+                  <td class="d-none d-xl-table-cell">
+                    <a class="fw-semibold" href="javascript:void(0)">Andrea Gardner</a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Photographer</p>
+                  </td>
+                  <td>
+                    <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">Completed</span>
+                  </td>
+                  <td class="d-none d-sm-table-cell">
+                    <div class="progress mb-1" style="height: 5px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 18%;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="fs-xs fw-semibold mb-0">18%</p>
+                  </td>
+                  <td class="d-none d-sm-table-cell fw-semibold text-muted text-end">19 min ago</td>
+                  <td class="d-none d-sm-table-cell text-end">
+                    <strong>$2094,65</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="fw-semibold" href="javascript:void(0)">
+                      ORD.00924                  </a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Premium</p>
+                  </td>
+                  <td class="d-none d-xl-table-cell">
+                    <a class="fw-semibold" href="javascript:void(0)">Alice Moore</a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Application Manager</p>
+                  </td>
+                  <td>
+                    <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">Completed</span>
+                  </td>
+                  <td class="d-none d-sm-table-cell">
+                    <div class="progress mb-1" style="height: 5px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 19%;" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="fs-xs fw-semibold mb-0">19%</p>
+                  </td>
+                  <td class="d-none d-sm-table-cell fw-semibold text-muted text-end">25 min ago</td>
+                  <td class="d-none d-sm-table-cell text-end">
+                    <strong>$881,76</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="fw-semibold" href="javascript:void(0)">
+                      ORD.00923                  </a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Premium</p>
+                  </td>
+                  <td class="d-none d-xl-table-cell">
+                    <a class="fw-semibold" href="javascript:void(0)">Brian Cruz</a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Web developer</p>
+                  </td>
+                  <td>
+                    <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-warning-light text-warning">Pending</span>
+                  </td>
+                  <td class="d-none d-sm-table-cell">
+                    <div class="progress mb-1" style="height: 5px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 16%;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="fs-xs fw-semibold mb-0">16%</p>
+                  </td>
+                  <td class="d-none d-sm-table-cell fw-semibold text-muted text-end">3 min ago</td>
+                  <td class="d-none d-sm-table-cell text-end">
+                    <strong>$1647,56</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="fw-semibold" href="javascript:void(0)">
+                      ORD.00922                  </a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Premium</p>
+                  </td>
+                  <td class="d-none d-xl-table-cell">
+                    <a class="fw-semibold" href="javascript:void(0)">Lori Moore</a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Web developer</p>
+                  </td>
+                  <td>
+                    <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-warning-light text-warning">Pending</span>
+                  </td>
+                  <td class="d-none d-sm-table-cell">
+                    <div class="progress mb-1" style="height: 5px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 6%;" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="fs-xs fw-semibold mb-0">6%</p>
+                  </td>
+                  <td class="d-none d-sm-table-cell fw-semibold text-muted text-end">15 min ago</td>
+                  <td class="d-none d-sm-table-cell text-end">
+                    <strong>$1563,85</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="fw-semibold" href="javascript:void(0)">
+                      ORD.00921                  </a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Premium</p>
+                  </td>
+                  <td class="d-none d-xl-table-cell">
+                    <a class="fw-semibold" href="javascript:void(0)">Jack Greene</a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Web developer</p>
+                  </td>
+                  <td>
+                    <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">Completed</span>
+                  </td>
+                  <td class="d-none d-sm-table-cell">
+                    <div class="progress mb-1" style="height: 5px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 19%;" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="fs-xs fw-semibold mb-0">19%</p>
+                  </td>
+                  <td class="d-none d-sm-table-cell fw-semibold text-muted text-end">2 min ago</td>
+                  <td class="d-none d-sm-table-cell text-end">
+                    <strong>$459,64</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="fw-semibold" href="javascript:void(0)">
+                      ORD.00920                  </a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Premium</p>
+                  </td>
+                  <td class="d-none d-xl-table-cell">
+                    <a class="fw-semibold" href="javascript:void(0)">Lori Grant</a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Product Designer</p>
+                  </td>
+                  <td>
+                    <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-warning-light text-warning">Pending</span>
+                  </td>
+                  <td class="d-none d-sm-table-cell">
+                    <div class="progress mb-1" style="height: 5px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 12%;" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="fs-xs fw-semibold mb-0">12%</p>
+                  </td>
+                  <td class="d-none d-sm-table-cell fw-semibold text-muted text-end">8 min ago</td>
+                  <td class="d-none d-sm-table-cell text-end">
+                    <strong>$2459,46</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="fw-semibold" href="javascript:void(0)">
+                      ORD.00919                  </a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Premium</p>
+                  </td>
+                  <td class="d-none d-xl-table-cell">
+                    <a class="fw-semibold" href="javascript:void(0)">Lisa Jenkins</a>
+                    <p class="fs-sm fw-medium text-muted mb-0">Photographer</p>
+                  </td>
+                  <td>
+                    <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-info-light text-info">Active</span>
+                  </td>
+                  <td class="d-none d-sm-table-cell">
+                    <div class="progress mb-1" style="height: 5px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 24%;" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="fs-xs fw-semibold mb-0">24%</p>
+                  </td>
+                  <td class="d-none d-sm-table-cell fw-semibold text-muted text-end">3 min ago</td>
+                  <td class="d-none d-sm-table-cell text-end">
+                    <strong>$492,68</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- END Recent Orders Table -->
+        </div>
+        <div class="block-content block-content-full bg-body-light">
+          <!-- Pagination -->
+          <nav aria-label="Photos Search Navigation">
+            <ul class="pagination pagination-sm justify-content-end mb-0">
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-label="Previous">
+                  Prev
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- END Pagination -->
+        </div>
+      </div>
+      <!-- END Recent Orders -->
+    </div>
+    <!-- END Page Content -->
+  </main>
+  <!-- END Main Container -->
 @endsection

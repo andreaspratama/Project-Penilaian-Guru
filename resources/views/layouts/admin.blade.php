@@ -1,43 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>@yield('title')</title>
 
-  <title>@yield('title')</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
 
-  @stack('prepend-style')
-  @include('includes.admin.style')
-  @stack('addon-style')
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework">
+    <meta property="og:site_name" content="OneUI">
+    <meta property="og:description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
+    @stack('prepend-style')
+    @include('includes.admin.style')
+    @stack('addon-style')
+  </head>
 
-<body>
+  <body>
+    <!-- Page Container -->
+    <!--
+        Available classes for #page-container:
 
-  @include('includes.admin.header')
+    GENERIC
 
-  @include('includes.admin.sidebar')
+      'remember-theme'                            Remembers active color theme and dark mode between pages using localStorage when set through
+                                                  - Theme helper buttons [data-toggle="theme"],
+                                                  - Layout helper buttons [data-toggle="layout" data-action="dark_mode_[on/off/toggle]"]
+                                                  - ..and/or One.layout('dark_mode_[on/off/toggle]')
 
-  @yield('content')
+    SIDEBAR & SIDE OVERLAY
 
-  @include('includes.admin.footer')
+      'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
+      'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
+      'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
+      'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
+      'sidebar-dark'                              Dark themed sidebar
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
+      'side-overlay-o'                            Visible Side Overlay by default
 
-  @stack('prepend-script')
-  @include('includes.admin.script')
-  @stack('addon-script')
+      'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
 
-</body>
+      'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
 
+    HEADER
+
+      ''                                          Static Header if no class is added
+      'page-header-fixed'                         Fixed Header
+
+    HEADER STYLE
+
+      ''                                          Light themed Header
+      'page-header-dark'                          Dark themed Header
+
+    MAIN CONTENT LAYOUT
+
+      ''                                          Full width Main Content if no class is added
+      'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
+      'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
+
+    DARK MODE
+
+      'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
+    -->
+    <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+
+      @include('includes.admin.sidebar')
+
+      @include('includes.admin.header')
+
+      @yield('content')
+
+      @include('includes.admin.footer')
+    </div>
+    <!-- END Page Container -->
+
+    @stack('prepend-script')
+    @include('includes.admin.script')
+    @stack('addon-script')
+  </body>
 </html>
