@@ -63,16 +63,37 @@ Route::group(['middleware' => 'auth'], function(){
     
         // NILAI
         Route::get('ambilGuru', [NilaiController::class, 'ambilGuru'])->name('ambilGuru'); 
+
         Route::get('nilai', [NilaiController::class, 'index'])->name('nilai');
+
         Route::get('nilaiGuru', [NilaiController::class, 'nilaiGuru'])->name('nilaiGuru');
+
         Route::get('nilaiGr/{id}', [NilaiController::class, 'nilaiGr'])->name('nilaiGr');
-        Route::get('prosNilaiGr/{idguru}/{idindikator}', [NilaiController::class, 'prosNilaiGr'])->name('prosNilaiGr');
-        Route::post('guru/{idguru}/tambahNilai', [NilaiController::class, 'tambahNilai'])->name('tambahNilai');
-        Route::get('prosEditNilaiGr/{idguru}/{idindikator}', [NilaiController::class, 'prosEditNilaiGr'])->name('prosEditNilaiGr');
-        Route::post('guru/{idguru}/editNilai', [NilaiController::class, 'editNilai'])->name('editNilai');
-        // NILAI KEPRIBADIAN
-        // Route::get('nilaiKepribadian', [NilaikepribadianController::class, 'index'])->name('nilaiKepribadian');
-        // Route::get('editNilai/{id}', [NilaikepribadianController::class, 'editNilai'])->name('editNilai');
-        // Route::get('buatNilai', [NilaikepribadianController::class, 'buatNilai'])->name('buatNilai');
+
+        Route::get('prosNilaiGr/{idguru}', [NilaiController::class, 'prosNilaiGr'])->name('prosNilaiGr');
+
+        Route::get('nilaiGrDetail/{id}', [NilaiController::class, 'nilaiGrDetail'])->name('nilaiGrDetail');
+
+        Route::get('nilaiGrEdit/{id}', [NilaiController::class, 'nilaiGrEdit'])->name('nilaiGrEdit'); // Edit nilai per guru
+
+        Route::post('guru/{idguru}/tambahNilai', [NilaiController::class, 'tambahNilaiKs'])->name('tambahNilai'); // Tambah nilai untuk ks
+
+        Route::post('guru/{idguru}/editNilaiKsAdmin', [NilaiController::class, 'editNilaiKsAdmin'])->name('editNilaiKsAdmin'); // Edit nilai ks dari admin
+
+        Route::post('guru/{idguru}/tambahNilaiWaka', [NilaiController::class, 'tambahNilaiWaka'])->name('tambahNilaiWaka'); // Tambah nilai untuk wakakur
+
+        Route::post('guru/{idguru}/editNilaiWakaAdmin', [NilaiController::class, 'editNilaiWakaAdmin'])->name('editNilaiWakaAdmin'); // Tambah nilai wakakur dari admin
+
+        Route::post('guru/{idguru}/tambahNilaiOs', [NilaiController::class, 'tambahNilaiSo'])->name('tambahNilaiOs'); // Tambah nilai untuk orangtua/siswa
+
+        Route::post('guru/{idguru}/editNilaiOsAdmin', [NilaiController::class, 'editNilaiSoAdmin'])->name('editNilaiOsAdmin'); // Edit nilai orangtua/siswa dari admin
+
+        Route::post('guru/{idguru}/tambahNilaiRk', [NilaiController::class, 'tambahNilaiRk'])->name('tambahNilaiRk'); // Tambah nilai untuk rekan kerja
+
+        Route::post('guru/{idguru}/editNilaiRkAdmin', [NilaiController::class, 'editNilaiRkAdmin'])->name('editNilaiRkAdmin'); // Edit nilai rekan kerja dari admin
+
+        Route::post('guru/{idguru}/tambahNilaiDs', [NilaiController::class, 'tambahNilaiDs'])->name('tambahNilaiDs'); // Tambah nilai untuk diri sendiri
+
+        Route::post('guru/{idguru}/editNilaiDsAdmin', [NilaiController::class, 'editNilaiDsAdmin'])->name('editNilaiDsAdmin'); // Edit nilai diri sendiri dari admin
     });
 });

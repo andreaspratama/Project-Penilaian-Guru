@@ -47,19 +47,45 @@
                   <th class="text-center" style="width: 100px;">
                     
                   </th>
-                  <th>Aspek</th>
+                  <th>Guru</th>
                   <th style="width: 30%;">Aksi</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($aspek as $as)
-                  <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$as->aspek}}</td>
-                    <td>
-                        <a href="{{route('nilaiGr', $as->id)}}" class="btn btn-primary">Nilai</a>
-                    </td>
-                  </tr>
+                @php $no = 1; @endphp
+                @foreach ($gurus as $gr)
+                  @if (auth()->user()->role == 'GURU')
+                      @if ($gr->user_id == auth()->user()->id)
+                        <tr>
+                          <td>{{ $no++ }}</td>
+                          <td>{{$gr->nama}}</td>
+                          <td>
+                              <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a>
+                              <a href="{{route('nilaiGrDetail', $gr->id)}}" class="btn btn-warning">Detail Nilai</a>
+                          </td>
+                        </tr>
+                      @endif
+                  @elseif(auth()->user()->role == 'ADMIN')
+                    <tr>
+                      <td>{{ $no++ }}</td>
+                      <td>{{$gr->nama}}</td>
+                      <td>
+                          <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a>
+                          <a href="{{route('nilaiGrDetail', $gr->id)}}" class="btn btn-warning">Detail Nilai</a>
+                      </td>
+                    </tr> 
+                  @else
+                    @if ($gr->unit == auth()->user()->penilai->unit)
+                      <tr>
+                        <td>{{ $no++ }}</td>
+                        <td>{{$gr->nama}}</td>
+                        <td>
+                            <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a>
+                            <a href="{{route('nilaiGrDetail', $gr->id)}}" class="btn btn-warning">Detail Nilai</a>
+                        </td>
+                      </tr>
+                    @endif
+                  @endif
                 @endforeach
               </tbody>
             </table>

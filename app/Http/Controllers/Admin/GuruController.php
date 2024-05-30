@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Guru;
 use App\Models\Unit;
+use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 
 class GuruController extends Controller
@@ -56,8 +57,17 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Guru::create($data);
+        // INSERT KE TABEL USER
+        $user = new User;
+        $user->name  = $request->nama;
+        $user->email  = $request->email;
+        $user->password  = bcrypt('guru123**');
+        $user->role = 'GURU';
+        $user->save();
+
+        // INSERT KE TABEL GURU
+        $request->request->add(['user_id' => $user->id]);
+        Guru::create($request->all());
 
         return redirect()->route('guru.index')->with('success', 'Data berhasil dimasukan. Good job');
     }

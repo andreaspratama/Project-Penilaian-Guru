@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Guru extends Model
 {
@@ -21,5 +22,30 @@ class Guru extends Model
     public function indikatornilais(): BelongsToMany
     {
         return $this->belongsToMany(Indikatornilai::class)->withPivot(['prilaku', 'tuturkata']);
+    }
+
+    public function nilaiks(): HasMany
+    {
+        return $this->hasMany(Nilaiks::class);
+    }
+
+    public function nilaiwakakur(): HasMany
+    {
+        return $this->hasMany(Nilaiwakakur::class);
+    }
+
+    public function so(): HasMany
+    {
+        return $this->hasMany(So::class);
+    }
+
+    public function rk(): HasMany
+    {
+        return $this->hasMany(Rk::class);
+    }
+
+    public function ds(): HasMany
+    {
+        return $this->hasMany(Ds::class);
     }
 }
