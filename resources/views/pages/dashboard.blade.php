@@ -15,7 +15,7 @@
             Dashboard
           </h1>
           <h2 class="h6 fw-medium fw-medium text-muted mb-0">
-            Welcome <a class="fw-semibold" href="be_pages_generic_profile.html">John</a>, everything looks great.
+            Welcome <a class="fw-semibold" href="be_pages_generic_profile.html">{{auth()->user()->name}}</a>
           </h2>
         </div>
       </div>
