@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tahunajaran;
+use App\Models\Nilaiks;
 use Yajra\DataTables\Facades\DataTables;
 
 class TahunajaranController extends Controller

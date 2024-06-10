@@ -13,6 +13,7 @@
           <div class="flex-grow-1">
             <h1 class="h3 fw-bold mb-2">
               Nilai Guru
+              {{-- {{$tahasil->nama}} --}}
             </h1>
           </div>
           <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
@@ -111,10 +112,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="prilakuKepri" value="{{$nilai->prilakuKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="prilakuKepri" value="{{$nilai->prilakuKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="prilakuKepri" value="{{old('prilakuKepri'), $nilai->prilakuKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="prilakuKepri" value="{{$nilai->prilakuKepri ?? ''}}">
+                          <input type="text" class="form-control" name="prilakuKepri" value="{{old('prilakuKepri'), $nilai->prilakuKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -124,10 +129,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="tuturkataKepri" value="{{$nilai->tuturkataKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="tuturkataKepri" value="{{$nilai->tuturkataKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="tuturkataKepri" value="{{old('tuturkataKepri'), $nilai->tuturkataKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="tuturkataKepri" value="{{$nilai->tuturkataKepri ?? ''}}">                        
+                          <input type="text" class="form-control @error('tuturkataKepri') @enderror" name="tuturkataKepri" value="{{old('tuturkataKepri'), $nilai->tuturkataKepri ?? ''}}">                        
                         @endif
                       </td>
                     </tr>
@@ -137,10 +146,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="keuanganKepri" value="{{$nilai->keuanganKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="keuanganKepri" value="{{$nilai->keuanganKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="keuanganKepri" value="{{old('keuanganKepri'), $nilai->keuanganKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="keuanganKepri" value="{{$nilai->keuanganKepri ?? ''}}">                       
+                          <input type="text" class="form-control" name="keuanganKepri" value="{{old('keuanganKepri'), $nilai->keuanganKepri ?? ''}}">                       
                         @endif
                       </td>
                     </tr>
@@ -150,10 +163,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="kepedulianKepri" value="{{$nilai->kepedulianKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="kepedulianKepri" value="{{$nilai->kepedulianKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="kepedulianKepri" value="{{old('kepedulianKepri'), $nilai->kepedulianKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kepedulianKepri" value="{{$nilai->kepedulianKepri ?? ''}}">                       
+                          <input type="text" class="form-control" name="kepedulianKepri" value="{{old('kepedulianKepri'), $nilai->kepedulianKepri ?? ''}}">                       
                         @endif
                       </td>
                     </tr>
@@ -163,10 +180,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="persekutuanKepri" value="{{$nilai->persekutuanKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="persekutuanKepri" value="{{$nilai->persekutuanKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="persekutuanKepri" value="{{old('persekutuanKepri'), $nilai->persekutuanKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="persekutuanKepri" value="{{$nilai->persekutuanKepri ?? ''}}">                      
+                          <input type="text" class="form-control" name="persekutuanKepri" value="{{old('persekutuanKepri'), $nilai->persekutuanKepri ?? ''}}">                      
                         @endif
                       </td>
                     </tr>
@@ -176,10 +197,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="penampilanKepri" value="{{$nilai->penampilanKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="penampilanKepri" value="{{$nilai->penampilanKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="penampilanKepri" value="{{old('penampilanKepri'), $nilai->penampilanKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="penampilanKepri" value="{{$nilai->penampilanKepri ?? ''}}">                      
+                          <input type="text" class="form-control" name="penampilanKepri" value="{{old('penampilanKepri'), $nilai->penampilanKepri ?? ''}}">                      
                         @endif
                       </td>
                     </tr>
@@ -189,10 +214,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="sikapkerjaKepri" value="{{$nilai->sikapkerjaKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="sikapkerjaKepri" value="{{$nilai->sikapkerjaKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="sikapkerjaKepri" value="{{old('sikapkerjaKepri'), $nilai->sikapkerjaKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="sikapkerjaKepri" value="{{$nilai->sikapkerjaKepri ?? ''}}">                      
+                          <input type="text" class="form-control" name="sikapkerjaKepri" value="{{old('sikapkerjaKepri'), $nilai->sikapkerjaKepri ?? ''}}">                      
                         @endif
                       </td>
                     </tr>
@@ -202,10 +231,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="masukkerjaKepri" value="{{$nilai->masukkerjaKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="masukkerjaKepri" value="{{$nilai->masukkerjaKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="masukkerjaKepri" value="{{old('masukkerjaKepri'), $nilai->masukkerjaKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="masukkerjaKepri" value="{{$nilai->masukkerjaKepri ?? ''}}">                      
+                          <input type="text" class="form-control" name="masukkerjaKepri" value="{{old('masukkerjaKepri'), $nilai->masukkerjaKepri ?? ''}}">                      
                         @endif
                       </td>
                     </tr>
@@ -215,10 +248,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="kesetianyskiKepri" value="{{$nilai->kesetianyskiKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="kesetianyskiKepri" value="{{$nilai->kesetianyskiKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="kesetianyskiKepri" value="{{old('kesetianyskiKepri'), $nilai->kesetianyskiKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kesetianyskiKepri" value="{{$nilai->kesetianyskiKepri ?? ''}}">                      
+                          <input type="text" class="form-control" name="kesetianyskiKepri" value="{{old('kesetianyskiKepri'), $nilai->kesetianyskiKepri ?? ''}}">                      
                         @endif
                       </td>
                     </tr>
@@ -228,10 +265,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="kesetianpimKepri" value="{{$nilai->kesetianpimKepri}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="kesetianpimKepri" value="{{$nilai->kesetianpimKepri}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="kesetianpimKepri" value="{{old('kesetianpimKepri'), $nilai->kesetianpimKepri ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kesetianpimKepri" value="{{$nilai->kesetianpimKepri ?? ''}}">                    
+                          <input type="text" class="form-control" name="kesetianpimKepri" value="{{old('kesetianpimKepri'), $nilai->kesetianpimKepri ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -246,10 +287,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="manajkelasPeda" value="{{$nilai->manajkelasPeda}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="manajkelasPeda" value="{{$nilai->manajkelasPeda}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="manajkelasPeda" value="{{old('manajkelasPeda'), $nilai->manajkelasPeda ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="manajkelasPeda" value="{{$nilai->manajkelasPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="manajkelasPeda" value="{{old('manajkelasPeda'), $nilai->manajkelasPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -259,10 +304,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="kualitaspemPeda" value="{{$nilai->kualitaspemPeda}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="kualitaspemPeda" value="{{$nilai->kualitaspemPeda}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="kualitaspemPeda" value="{{old('kualitaspemPeda'), $nilai->kualitaspemPeda ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kualitaspemPeda" value="{{$nilai->kualitaspemPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="kualitaspemPeda" value="{{old('kualitaspemPeda'), $nilai->kualitaspemPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -277,10 +326,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="samaortuSos" value="{{$nilai->samaortuSos}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="samaortuSos" value="{{$nilai->samaortuSos}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="samaortuSos" value="{{old('samaortuSos'), $nilai->samaortuSos ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="samaortuSos" value="{{$nilai->samaortuSos ?? ''}}">                    
+                          <input type="text" class="form-control" name="samaortuSos" value="{{old('samaortuSos'),$nilai->samaortuSos ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -290,10 +343,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="samapendSos" value="{{$nilai->samapendSos}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="samapendSos" value="{{$nilai->samapendSos}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="samapendSos" value="{{old('samapendSos'), $nilai->samapendSos ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="samapendSos" value="{{$nilai->samapendSos ?? ''}}">                    
+                          <input type="text" class="form-control" name="samapendSos" value="{{old('samapendSos'), $nilai->samapendSos ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -303,10 +360,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="samatenpendSos" value="{{$nilai->samatenpendSos}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="samatenpendSos" value="{{$nilai->samatenpendSos}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="samatenpendSos" value="{{old('samatenpendSos'), $nilai->samatenpendSos ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="samatenpendSos" value="{{$nilai->samatenpendSos ?? ''}}">                    
+                          <input type="text" class="form-control" name="samatenpendSos" value="{{old('samatenpendSos'), $nilai->samatenpendSos ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -316,10 +377,14 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="organisasiSos" value="{{$nilai->organisasiSos}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="organisasiSos" value="{{$nilai->organisasiSos}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="organisasiSos" value="{{old('organisasiSos'), $nilai->organisasiSos ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="organisasiSos" value="{{$nilai->organisasiSos ?? ''}}">                    
+                          <input type="text" class="form-control" name="organisasiSos" value="{{old('organisasiSos'), $nilai->organisasiSos ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -334,23 +399,32 @@
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
-                            <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$nilai->kompkeilmuProfesional}}" disabled>
+                            @if ($cekta)
+                              <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$nilai->kompkeilmuProfesional}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{old('kompkeilmuProfesional'), $nilai->kompkeilmuProfesional ?? ''}}">
+                            @endif
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$nilai->kompkeilmuProfesional ?? ''}}">                    
+                          <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{old('kompkeilmuProfesional'), $nilai->kompkeilmuProfesional ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
-                    <tr>
+                    <tr> 
                       <td>Seminar / Literasi</td>
                       <td>Keaktifan mengikuti seminar / pelatihan, keaktifan membaca buku</td>
                       <td>
                         @if ($nilai)
                           @if (auth()->user()->role == 'KS')
                             <input type="text" class="form-control" name="seminarProfesional" value="{{$nilai->seminarProfesional}}" disabled>
+                            {{-- @if ($cekta)
+                              <input type="text" class="form-control" name="seminarProfesional" value="{{$nilai->seminarProfesional}}" disabled>
+                            @else
+                              <input type="text" class="form-control" name="seminarProfesional" value="{{old('seminarProfesional'), $nilai->seminarProfesional ?? ''}}">
+                            @endif --}}
                           @endif
                         @else
-                          <input type="text" class="form-control" name="seminarProfesional" value="{{$nilai->seminarProfesional ?? ''}}">                  
+                          <input type="text" class="form-control" name="seminarProfesional" value="{{old('seminarProfesional'), $nilai->seminarProfesional ?? ''}}">                  
                         @endif
                       </td>
                     </tr>
@@ -370,7 +444,7 @@
                       <td></td>
                       <td>
                         @if ($nilai)
-                            <b>Terimakasih sudah mengisi nilai</b>
+                          <b>Terimakasih sudah mengisi nilai</b>
                         @else
                           <button class="btn btn-primary" type="submit">Simpan</button>
                         @endif
@@ -396,7 +470,7 @@
                             <input type="text" class="form-control" name="penamKepri" value="{{$nilaiwaka->penamKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="penamKepri" value="{{$nilaiwaka->penamKepri ?? ''}}">
+                          <input type="text" class="form-control" name="penamKepri" value="{{old('penamKepri'), $nilaiwaka->penamKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -409,7 +483,7 @@
                             <input type="text" class="form-control" name="sikerKepri" value="{{$nilaiwaka->sikerKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="sikerKepri" value="{{$nilaiwaka->sikerKepri ?? ''}}">                        
+                          <input type="text" class="form-control" name="sikerKepri" value="{{old('sikerKepri'), $nilaiwaka->sikerKepri ?? ''}}">                        
                         @endif
                       </td>
                     </tr>
@@ -422,7 +496,7 @@
                             <input type="text" class="form-control" name="maskerKepri" value="{{$nilaiwaka->maskerKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="maskerKepri" value="{{$nilaiwaka->maskerKepri ?? ''}}">                       
+                          <input type="text" class="form-control" name="maskerKepri" value="{{old('maskerKepri'), $nilaiwaka->maskerKepri ?? ''}}">                       
                         @endif
                       </td>
                     </tr>
@@ -435,7 +509,7 @@
                             <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{$nilaiwaka->kesetiaanpimKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{$nilaiwaka->kesetiaanpimKepri ?? ''}}">                       
+                          <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{old('kesetiaanpimKepri'), $nilaiwaka->kesetiaanpimKepri ?? ''}}">                       
                         @endif
                       </td>
                     </tr>
@@ -453,7 +527,7 @@
                             <input type="text" class="form-control" name="valuePeda" value="{{$nilaiwaka->valuePeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="valuePeda" value="{{$nilaiwaka->valuePeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="valuePeda" value="{{old('valuePeda'), $nilaiwaka->valuePeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -466,7 +540,7 @@
                             <input type="text" class="form-control" name="manajkelasPeda" value="{{$nilaiwaka->manajkelasPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="manajkelasPeda" value="{{$nilaiwaka->manajkelasPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="manajkelasPeda" value="{{old('manajkelasPeda'), $nilaiwaka->manajkelasPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -479,7 +553,7 @@
                             <input type="text" class="form-control" name="lmsPeda" value="{{$nilaiwaka->lmsPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="lmsPeda" value="{{$nilaiwaka->lmsPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="lmsPeda" value="{{old('lmsPeda'), $nilaiwaka->lmsPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -492,7 +566,7 @@
                             <input type="text" class="form-control" name="modelpemPeda" value="{{$nilaiwaka->modelpemPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="modelpemPeda" value="{{$nilaiwaka->modelpemPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="modelpemPeda" value="{{old('modelpemPeda'), $nilaiwaka->modelpemPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -505,7 +579,7 @@
                             <input type="text" class="form-control" name="mediaPeda" value="{{$nilaiwaka->mediaPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="mediaPeda" value="{{$nilaiwaka->mediaPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="mediaPeda" value="{{old('mediaPeda'), $nilaiwaka->mediaPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -518,7 +592,7 @@
                             <input type="text" class="form-control" name="kualitaspemPeda" value="{{$nilaiwaka->kualitaspemPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kualitaspemPeda" value="{{$nilaiwaka->kualitaspemPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="kualitaspemPeda" value="{{old('kualitaspemPeda'), $nilaiwaka->kualitaspemPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -536,7 +610,7 @@
                             <input type="text" class="form-control" name="samapendSos" value="{{$nilaiwaka->samapendSos}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="samapendSos" value="{{$nilaiwaka->samapendSos ?? ''}}">                    
+                          <input type="text" class="form-control" name="samapendSos" value="{{old('samapendSos'), $nilaiwaka->samapendSos ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -549,7 +623,7 @@
                             <input type="text" class="form-control" name="organisasiSos" value="{{$nilaiwaka->organisasiSos}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="organisasiSos" value="{{$nilaiwaka->organisasiSos ?? ''}}">                    
+                          <input type="text" class="form-control" name="organisasiSos" value="{{old('organisasiSos'), $nilaiwaka->organisasiSos ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -567,7 +641,7 @@
                             <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$nilaiwaka->kompkeilmuProfesional}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$nilaiwaka->kompkeilmuProfesional ?? ''}}">                    
+                          <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{old('kompkeilmuProfesional'), $nilaiwaka->kompkeilmuProfesional ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -580,7 +654,7 @@
                             <input type="text" class="form-control" name="kompdigProfesional" value="{{$nilaiwaka->kompdigProfesional}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kompdigProfesional" value="{{$nilaiwaka->kompdigProfesional ?? ''}}">                    
+                          <input type="text" class="form-control" name="kompdigProfesional" value="{{old('kompdigProfesional'), $nilaiwaka->kompdigProfesional ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -593,7 +667,7 @@
                             <input type="text" class="form-control" name="seminarProfesional" value="{{$nilaiwaka->seminarProfesional}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="seminarProfesional" value="{{$nilaiwaka->seminarProfesional ?? ''}}">                  
+                          <input type="text" class="form-control" name="seminarProfesional" value="{{old('seminarProfesional'), $nilaiwaka->seminarProfesional ?? ''}}">                  
                         @endif
                       </td>
                     </tr>
@@ -639,7 +713,7 @@
                             <input type="text" class="form-control" name="valuePeda" value="{{$so->valuePeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="valuePeda" value="{{$so->valuePeda ?? ''}}">
+                          <input type="text" class="form-control" name="valuePeda" value="{{old('valuePeda'), $so->valuePeda ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -652,7 +726,7 @@
                             <input type="text" class="form-control" name="manajPeda" value="{{$so->manajPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="manajPeda" value="{{$so->manajPeda ?? ''}}">                        
+                          <input type="text" class="form-control" name="manajPeda" value="{{old('manajPeda'), $so->manajPeda ?? ''}}">                        
                         @endif
                       </td>
                     </tr>
@@ -665,7 +739,7 @@
                             <input type="text" class="form-control" name="lmsPeda" value="{{$so->lmsPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="lmsPeda" value="{{$so->lmsPeda ?? ''}}">                       
+                          <input type="text" class="form-control" name="lmsPeda" value="{{old('lmsPeda'), $so->lmsPeda ?? ''}}">                       
                         @endif
                       </td>
                     </tr>
@@ -678,7 +752,7 @@
                             <input type="text" class="form-control" name="modelPeda" value="{{$so->modelPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="modelPeda" value="{{$so->modelPeda ?? ''}}">                       
+                          <input type="text" class="form-control" name="modelPeda" value="{{old('modelPeda'), $so->modelPeda ?? ''}}">                       
                         @endif
                       </td>
                     </tr>
@@ -691,7 +765,7 @@
                             <input type="text" class="form-control" name="mediaPeda" value="{{$so->mediaPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="mediaPeda" value="{{$so->mediaPeda ?? ''}}">                    
+                          <input type="text" class="form-control" name="mediaPeda" value="{{old('mediaPeda'), $so->mediaPeda ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -709,7 +783,7 @@
                             <input type="text" class="form-control" name="kerjasoSos" value="{{$so->kerjasoSos}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kerjasoSos" value="{{$so->kerjasoSos ?? ''}}">                    
+                          <input type="text" class="form-control" name="kerjasoSos" value="{{old('kerjasoSos'), $so->kerjasoSos ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -727,7 +801,7 @@
                             <input type="text" class="form-control" name="kompdigProfesional" value="{{$so->kompdigProfesional}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kompdigProfesional" value="{{$so->kompdigProfesional ?? ''}}">                    
+                          <input type="text" class="form-control" name="kompdigProfesional" value="{{old('kompdigProfesional'), $so->kompdigProfesional ?? ''}}">                    
                         @endif
                       </td>
                     </tr>
@@ -773,7 +847,7 @@
                             <input type="text" class="form-control" name="perilakuKepri" value="{{$rk->perilakuKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="perilakuKepri" value="{{$rk->perilakuKepri ?? ''}}">
+                          <input type="text" class="form-control" name="perilakuKepri" value="{{old('perilakuKepri'), $rk->perilakuKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -786,7 +860,7 @@
                             <input type="text" class="form-control" name="tuturkataKepri" value="{{$rk->tuturkataKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="tuturkataKepri" value="{{$rk->tuturkataKepri ?? ''}}">
+                          <input type="text" class="form-control" name="tuturkataKepri" value="{{old('tuturkataKepri'), $rk->tuturkataKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -799,7 +873,7 @@
                             <input type="text" class="form-control" name="kepedulianKepri" value="{{$rk->kepedulianKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kepedulianKepri" value="{{$rk->kepedulianKepri ?? ''}}">
+                          <input type="text" class="form-control" name="kepedulianKepri" value="{{old('kepedulianKepri'), $rk->kepedulianKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -812,7 +886,7 @@
                             <input type="text" class="form-control" name="penampilanKepri" value="{{$rk->penampilanKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="penampilanKepri" value="{{$rk->penampilanKepri ?? ''}}">
+                          <input type="text" class="form-control" name="penampilanKepri" value="{{old('penampilanKepri'), $rk->penampilanKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -825,7 +899,7 @@
                             <input type="text" class="form-control" name="sikerKepri" value="{{$rk->sikerKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="sikerKepri" value="{{$rk->sikerKepri ?? ''}}">
+                          <input type="text" class="form-control" name="sikerKepri" value="{{old('sikerKepri'), $rk->sikerKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -843,7 +917,7 @@
                             <input type="text" class="form-control" name="samapendSos" value="{{$rk->samapendSos}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="samapendSos" value="{{$rk->samapendSos ?? ''}}">
+                          <input type="text" class="form-control" name="samapendSos" value="{{old('samapendSos'), $rk->samapendSos ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -856,7 +930,7 @@
                             <input type="text" class="form-control" name="samatenpendSos" value="{{$rk->samatenpendSos}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="samatenpendSos" value="{{$rk->samatenpendSos ?? ''}}">
+                          <input type="text" class="form-control" name="samatenpendSos" value="{{old('samatenpendSos'), $rk->samatenpendSos ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -902,7 +976,7 @@
                             <input type="text" class="form-control" name="kepedulianKepri" value="{{$ds->kepedulianKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kepedulianKepri" value="{{$ds->kepedulianKepri ?? ''}}">
+                          <input type="text" class="form-control" name="kepedulianKepri" value="{{old('kepedulianKepri'), $ds->kepedulianKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -915,7 +989,7 @@
                             <input type="text" class="form-control" name="persekutuanKepri" value="{{$ds->persekutuanKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="persekutuanKepri" value="{{$ds->persekutuanKepri ?? ''}}">
+                          <input type="text" class="form-control" name="persekutuanKepri" value="{{old('persekutuanKepri'), $ds->persekutuanKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -928,7 +1002,7 @@
                             <input type="text" class="form-control" name="kesetiaanyskiKepri" value="{{$ds->kesetiaanyskiKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kesetiaanyskiKepri" value="{{$ds->kesetiaanyskiKepri ?? ''}}">
+                          <input type="text" class="form-control" name="kesetiaanyskiKepri" value="{{old('kesetiaanyskiKepri'), $ds->kesetiaanyskiKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -941,7 +1015,7 @@
                             <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{$ds->kesetiaanpimKepri}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{$ds->kesetiaanpimKepri ?? ''}}">
+                          <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{old('kesetiaanpimKepri'), $ds->kesetiaanpimKepri ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -959,7 +1033,7 @@
                             <input type="text" class="form-control" name="modelPeda" value="{{$ds->modelPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="modelPeda" value="{{$ds->modelPeda ?? ''}}">
+                          <input type="text" class="form-control" name="modelPeda" value="{{old('modelPeda'), $ds->modelPeda ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -977,7 +1051,7 @@
                             <input type="text" class="form-control" name="samaortuSos" value="{{$ds->samaortuSos}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="samaortuSos" value="{{$ds->samaortuSos ?? ''}}">
+                          <input type="text" class="form-control" name="samaortuSos" value="{{old('samaortuSos'), $ds->samaortuSos ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -995,7 +1069,7 @@
                             <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$ds->kompkeilmuProfesional}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$ds->kompkeilmuProfesional ?? ''}}">
+                          <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{old('kompkeilmuProfesional'), $ds->kompkeilmuProfesional ?? ''}}">
                         @endif
                       </td>
                     </tr>
@@ -1046,51 +1120,17 @@
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    {{-- <script>
-      $(document).ready(function() {
-        $('#nilaikepribadian').on('click', '.delete', function() {
-            var nilaiid = $(this).attr('data-id');
-            swal({
-            title: "Delete",
-            text: "Apakah kamu yakin?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
-            .then((willDelete) => {
-                console.log(willDelete);
-              if (willDelete) {
-                window.location = "deleteNilai/"+nilaiid+"";
-              } else {
-                swal("Data tidak terhapus");
-              }
-            });
-        });
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('form[action*="academic-years"]').forEach(form => {
+              form.addEventListener('submit', function() {
+                  // Mengosongkan form nilai
+                  document.getElementById('student_id').value = '';
+                  document.getElementById('score').value = '';
+              });
+          });
       });
     </script>
-    <script>
-        var datatable = $('#nilai').DataTable({
-            processing: true,
-            serverSide: true,
-            ordering: true,
-            ajax: {
-                url: '{!! url()->current() !!}',
-            },
-            columns: [
-                {data: 'number', name: 'number'},
-                {data: 'komponen', name: 'komponen'},
-                {data: 'definisi', name: 'definisi'},
-                {data: 'role', name: 'role'},
-                {
-                  data: 'aksi',
-                  name: 'aksi',
-                  orderable: false,
-                  searcable: false,
-                  width: '20%'
-                },
-            ]
-        })
-    </script> --}}
     <script>
       new DataTable('#nilai');
     </script>

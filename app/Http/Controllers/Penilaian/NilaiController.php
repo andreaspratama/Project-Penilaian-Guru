@@ -13,6 +13,11 @@ use App\Models\Nilaiwakakur;
 use App\Models\So;
 use App\Models\Rk;
 use App\Models\Ds;
+use App\Http\Requests\KsRequest;
+use App\Http\Requests\WakaRequest;
+use App\Http\Requests\SoRequest;
+use App\Http\Requests\RkRequest;
+use App\Http\Requests\GuruRequest;
 use Auth;
 
 class NilaiController extends Controller
@@ -33,6 +38,11 @@ class NilaiController extends Controller
         }
     }
 
+    // FUNTION BARU
+
+    // 1. ....
+    // 2. ....
+
     public function nilaiGuru()
     {
         $gurus = Guru::all();
@@ -42,24 +52,29 @@ class NilaiController extends Controller
 
     public function nilaiGr($id)
     {
+        $ta = Tahunajaran::where('status', 'Aktif')->get();
+        $tahasil = $ta[0]->nama;
         $guru = Guru::findOrFail($id);
-        $nilai = Nilaiks::where('guru_id', $guru->id)->first();
-        $nilaiwaka = Nilaiwakakur::where('guru_id', $guru->id)->first();
-        $so = So::where('guru_id', $guru->id)->first();
-        $rk = Rk::where('guru_id', $guru->id)->first();
-        $ds = Ds::where('guru_id', $guru->id)->first();
+        $nilai = Nilaiks::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $nilaiwaka = Nilaiwakakur::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $so = So::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $rk = Rk::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $ds = Ds::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $cekta = Nilaiks::where('ta', $tahasil)->first();
 
-        return view('pages.penilaian.nilai.nilaiGr', compact('guru', 'nilai', 'nilaiwaka', 'so', 'rk', 'ds'));
+        return view('pages.penilaian.nilai.nilaiGr', compact('guru', 'nilai', 'nilaiwaka', 'so', 'rk', 'ds', 'cekta', 'ta'));
     }
 
     public function nilaiGrDetail($id)
     {
+        $ta = Tahunajaran::where('status', 'Aktif')->get();
+        $tahasil = $ta[0]->nama;
         $guru = Guru::findOrFail($id);
-        $nilai = Nilaiks::where('guru_id', $guru->id)->first();
-        $nilaiwaka = Nilaiwakakur::where('guru_id', $guru->id)->first();
-        $so = So::where('guru_id', $guru->id)->first();
-        $rk = Rk::where('guru_id', $guru->id)->first();
-        $ds = Ds::where('guru_id', $guru->id)->first();
+        $nilai = Nilaiks::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $nilaiwaka = Nilaiwakakur::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $so = So::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $rk = Rk::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $ds = Ds::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
         if ($nilaiwaka && $nilai && $so && $rk && $ds) {
             $nilaiAkhir = $nilai->hasil + $nilaiwaka->hasil + $so->hasil + $rk->hasil + $ds->hasil;
         } else {
@@ -73,18 +88,20 @@ class NilaiController extends Controller
 
     public function nilaiGrEdit($id)
     {
+        $ta = Tahunajaran::where('status', 'Aktif')->get();
+        $tahasil = $ta[0]->nama;
         $guru = Guru::findOrFail($id);
-        $nilai = Nilaiks::where('guru_id', $guru->id)->first();
-        $nilaiwaka = Nilaiwakakur::where('guru_id', $guru->id)->first();
-        $so = So::where('guru_id', $guru->id)->first();
-        $rk = Rk::where('guru_id', $guru->id)->first();
-        $ds = Ds::where('guru_id', $guru->id)->first();
+        $nilai = Nilaiks::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $nilaiwaka = Nilaiwakakur::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $so = So::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $rk = Rk::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $ds = Ds::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
 
         return view('pages.penilaian.nilai.nilaiGrEdit', compact('guru', 'nilai', 'nilaiwaka', 'so', 'rk', 'ds'));
     }
 
     // Tambah Nilai Role KS
-    public function tambahNilaiKs(Request $request, $idguru)
+    public function tambahNilaiKs(KsRequest $request, $idguru)
     {
         $hitung = $request->prilakuKepri + $request->tuturkataKepri + $request->keuanganKepri + $request->kepedulianKepri + $request->persekutuanKepri + $request->penampilanKepri + $request->sikapkerjaKepri + $request->masukkerjaKepri + $request->kesetianyskiKepri + $request->kesetianpimKepri + $request->manajkelasPeda + $request->kualitaspemPeda + $request->samaortuSos + $request->samapendSos + $request->samatenpendSos + $request->organisasiSos + $request->kompkeilmuProfesional + $request->seminarProfesional;
         $hitunghasil = $hitung * 0.35;
@@ -92,7 +109,9 @@ class NilaiController extends Controller
         $ta = Tahunajaran::where('status', 'Aktif')->get();
         $tahasil = $ta[0]->nama;
 
-        $data = Nilaiks::find($request->id);
+        $dataid = Nilaiks::find($request->id);
+        $datata = Nilaiks::find($tahasil);
+        $data = $dataid && $datata;
 
         if(!$data) {
             $data = new Nilaiks();
@@ -168,7 +187,7 @@ class NilaiController extends Controller
     }
 
     // Tambah Nilai Role WAKA
-    public function tambahNilaiWaka(Request $request, $idguru)
+    public function tambahNilaiWaka(WakaRequest $request, $idguru)
     {
         $hitung = $request->penamKepri + $request->sikerKepri + $request->maskerKepri + $request->kesetiaanpimKepri + $request->valuePeda + $request->manajkelasPeda + $request->lmsPeda + $request->modelpemPeda + $request->mediaPeda + $request->kualitaspemPeda + $request->samapendSos + $request->organisasiSos + $request->kompkeilmuProfesional + $request->kompdigProfesional + $request->seminarProfesional;
         $hitunghasil = $hitung * 0.25;
@@ -246,7 +265,7 @@ class NilaiController extends Controller
     }
 
     // Tambah Nilai Role SO
-    public function tambahNilaiSo(Request $request, $idguru)
+    public function tambahNilaiSo(SoRequest $request, $idguru)
     {
         $hitung = $request->valuePeda + $request->manajPeda + $request->lmsPeda + $request->modelPeda + $request->mediaPeda + $request->kerjasoSos + $request->kompdigProfesional;
         $hitunghasil = $hitung * 0.20;
@@ -308,7 +327,7 @@ class NilaiController extends Controller
     }
 
     // Tambah Nilai Role RK
-    public function tambahNilaiRk(Request $request, $idguru)
+    public function tambahNilaiRk(RkRequest $request, $idguru)
     {
         $hitung = $request->perilakuKepri + $request->tuturkataKepri + $request->kepedulianKepri + $request->penampilanKepri + $request->sikerKepri + $request->samapendSos + $request->samatenpendSos;
         $hitunghasil = $hitung * 0.12;
@@ -370,7 +389,7 @@ class NilaiController extends Controller
     }
 
     // Tambah Nilai Role Diri Sendiri
-    public function tambahNilaiDs(Request $request, $idguru)
+    public function tambahNilaiDs(GuruRequest $request, $idguru)
     {
         $hitung = $request->kepedulianKepri + $request->persekutuanKepri + $request->kesetiaanyskiKepri + $request->kesetiaanpimKepri + $request->modelPeda + $request->samaortuSos + $request->kompkeilmuProfesional;
         $hitunghasil = $hitung * 0.08;
