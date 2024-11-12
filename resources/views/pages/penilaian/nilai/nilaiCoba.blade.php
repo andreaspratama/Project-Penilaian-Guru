@@ -37,6 +37,18 @@
         <div class="block-header block-header-default">
           <h3 class="block-title">
             Nilai Guru
+            @if (auth()->user()->role == 'RK')
+              @php
+                  // Ubah string dinilai yang dipisahkan koma menjadi array
+                  $dinilaiIds = explode(',', auth()->user()->penilai->dinilai);
+              @endphp                
+            @endif
+            @if (auth()->user()->role == 'OS')
+              @php
+                  // Ubah string dinilai yang dipisahkan koma menjadi array
+                  $dinilaiIds = explode(',', auth()->user()->penilai->dinilai);
+              @endphp                
+            @endif
           </h3>
         </div>
         <div class="block-content">
@@ -44,8 +56,8 @@
             <table class="table table-bordered table-striped table-vcenter" id="indikatornilai">
               <thead>
                 <tr>
-                  <th class="text-center" style="width: 100px;">
-                    
+                  <th class="text-center" style="width: 10%;">
+                    No
                   </th>
                   <th>Guru</th>
                   <th style="width: 30%;">Aksi</th>
@@ -70,10 +82,39 @@
                       <td>{{ $no++ }}</td>
                       <td>{{$gr->nama}}</td>
                       <td>
-                          <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a>
+                          {{-- <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a> --}}
                           <a href="{{route('nilaiGrDetail', $gr->id)}}" class="btn btn-warning">Detail Nilai</a>
                       </td>
-                    </tr> 
+                    </tr>
+                  @elseif(auth()->user()->role == 'RK')
+                    @if (in_array($gr->id, $dinilaiIds)) <!-- Cek apakah ID guru ada di array -->
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $gr->nama }}</td>
+                            <td>
+                                <a href="{{ route('nilaiGr', $gr->id) }}" class="btn btn-primary">Nilai</a>
+                            </td>
+                        </tr>
+                    @endif
+                    {{-- @if ($gr->id == auth()->user()->penilai->dinilai)
+                      <tr>
+                        <td>{{ $no++ }}</td>
+                        <td>{{$gr->nama}}</td>
+                        <td>
+                            <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a>
+                        </td>
+                      </tr>
+                    @endif --}}
+                  @elseif(auth()->user()->role == 'OS')
+                    @if (in_array($gr->id, $dinilaiIds)) <!-- Cek apakah ID guru ada di array -->
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $gr->nama }}</td>
+                            <td>
+                                <a href="{{ route('nilaiGr', $gr->id) }}" class="btn btn-primary">Nilai</a>
+                            </td>
+                        </tr>
+                    @endif
                   @else
                     @if ($gr->unit == auth()->user()->penilai->unit)
                       <tr>
@@ -156,6 +197,6 @@
         })
     </script> --}}
     <script>
-      new DataTable('#nilai');
+      new DataTable('#indikatornilai');
     </script>
 @endpush

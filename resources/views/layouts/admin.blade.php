@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>OneUI - Bootstrap 5 Admin Template &amp; UI Framework</title>
+    <title>@yield('title')</title>
 
     <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
@@ -18,6 +18,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
+    @notifyCss
     @stack('prepend-style')
     @include('includes.admin.style')
     @stack('addon-style')
@@ -512,9 +513,12 @@
       @include('includes.admin.footer')
     </div>
     <!-- END Page Container -->
-
+    <x-notify::notify />
+    @notifyJs
     @stack('prepend-script')
     @include('includes.admin.script')
     @stack('addon-script')
+
+    {{-- @include('sweetalert::alert') --}}
   </body>
 </html>

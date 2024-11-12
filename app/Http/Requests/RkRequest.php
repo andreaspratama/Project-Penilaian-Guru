@@ -22,39 +22,46 @@ class RkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'perilakuKepri' => 'required|max:2',
-            'tuturkataKepri' => 'required|max:2',
-            'kepedulianKepri' => 'required|max:2',
-            'penampilanKepri' => 'required|max:2',
-            'sikerKepri' => 'required|max:2',
-            'samapendSos' => 'required|max:2',
-            'samatenpendSos' => 'required|max:2',
+            'perilakuKepri' => 'required|numeric|max:100|min:60',
+            'tuturkataKepri' => 'required|numeric|max:100|min:60',
+            'kepedulianKepri' => 'required|numeric|max:100|min:60',
+            'penampilanKepri' => 'required|numeric|max:100|min:60',
+            'sikerKepri' => 'required|numeric|max:100|min:60',
+            'samapendSos' => 'required|numeric|max:100|min:60',
+            'samatenpendSos' => 'required|numeric|max:100|min:60',
         ];
     }
 
     public function messages()
     {
         return [
-            'perilakuKepri.required' => 'Prilaku tidak boleh kosong',
-            'perilakuKepri.max' => 'Prilaku nilai max 2 angka',
+            'perilakuKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'perilakuKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'perilakuKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'tuturkataKepri.required' => 'Tutur kata tidak boleh kosong',
-            'tuturkataKepri.max' => 'Tutur kata nilai max 2 angka',
+            'tuturkataKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'tuturkataKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'tuturkataKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'kepedulianKepri.required' => 'Kepedulian tidak boleh kosong',
-            'kepedulianKepri.max' => 'Kepedulian nilai max 2 angka',
+            'kepedulianKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'kepedulianKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'kepedulianKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'penampilanKepri.required' => 'Penampilan tidak boleh kosong',
-            'penampilanKepri.max' => 'Penampilan nilai max 2 angka',
+            'penampilanKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'penampilanKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'penampilanKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'sikerKepri.required' => 'Sikap kerja tidak boleh kosong',
-            'sikerKepri.max' => 'Sikap kerja nilai max 2 angka',
+            'sikerKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'sikerKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'sikerKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'samapendSos.required' => 'Kerjasama dengan Pendidik tidak boleh kosong',
-            'samapendSos.max' => 'Kerjasama dengan Pendidik nilai max 2 angka',
+            'samapendSos.required' => 'Upss, nilai harus diisi yaa...',
+            'samapendSos.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'samapendSos.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'samatenpendSos.required' => 'Kerjasama dengan Tenaga Kependidikan tidak boleh kosong',
-            'samatenpendSos.max' => 'Kerjasama dengan Tenaga Kependidikan nilai max 2 angka',
+            'samatenpendSos.required' => 'Upss, nilai harus diisi yaa...',
+            'samatenpendSos.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'samatenpendSos.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
         ];
     }
 }

@@ -23,7 +23,7 @@
     <!-- END Hero -->
 
     <!-- Page Content -->
-    <div class="content">
+    {{-- <div class="content">
       <!-- Overview -->
       <div class="row items-push">
         <div class="col-sm-6 col-xxl-3">
@@ -509,7 +509,7 @@
         </div>
       </div>
       <!-- END Recent Orders -->
-    </div>
+    </div> --}}
     <!-- END Page Content -->
   </main>
   <!-- END Main Container -->

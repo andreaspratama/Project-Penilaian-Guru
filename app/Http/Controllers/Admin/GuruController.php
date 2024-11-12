@@ -8,6 +8,8 @@ use App\Models\Guru;
 use App\Models\Unit;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\GuruImport;
 
 class GuruController extends Controller
 {
@@ -100,6 +102,12 @@ class GuruController extends Controller
         $item = Guru::findOrFail($id);
         $item->update($data);
 
+        $userId = $item->user_id;
+        $userEdit = User::find($userId);
+        $userEdit->name = $request->nama;
+        $userEdit->email = $request->email;
+        $userEdit->save();
+
         return redirect()->route('guru.index')->with('success', 'Data berhasil diubah. Good job');
     }
 
@@ -116,6 +124,21 @@ class GuruController extends Controller
         $item = Guru::findOrFail($id);
         $item->delete();
 
+        $guruIdDelete = $item->user_id;
+        User::where('id', $guruIdDelete)->delete();
+
         return redirect()->route('guru.index')->with('success', 'Data berhasil dihapus. Good job');
     }
+
+    public function guruImportExcel(Request $request)
+    {
+        $file = $request->file('file');
+        $namaFile = $file->getClientOriginalName();
+        $file->move('DataGuru', $namaFile);
+
+        Excel::import(new GuruImport, public_path('/DataGuru/'.$namaFile));
+
+        return redirect()->route('guru.index')->with('success', 'Data Berhasil Diimport');
+    }
+
 }

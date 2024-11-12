@@ -39,8 +39,8 @@
             <a href="{{route('guru.create')}}" class="btn btn-primary">Tambah Guru</a>
           </h3>
           <div class="block-options">
-            <button type="button" class="btn-block-option">
-              <i class="si si-settings"></i>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Import Guru
             </button>
           </div>
         </div>
@@ -69,6 +69,27 @@
   </main>
   @include('sweetalert::alert')
 @endsection
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Import Guru</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('guruImportExcel')}}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Masukan File</label>
+            <input class="form-control" type="file" id="formFile" name="file">
+          </div>
+          <button type="submit" class="btn btn-success">Import</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 @push('prepend-style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">

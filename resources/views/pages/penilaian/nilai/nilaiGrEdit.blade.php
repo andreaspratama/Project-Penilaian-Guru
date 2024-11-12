@@ -802,4 +802,25 @@
     <script>
       new DataTable('#nilai');
     </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Cek apakah ada tab yang terakhir aktif di localStorage
+        var activeTab = localStorage.getItem('activeTab');
+
+        // Jika ada, aktifkan tab tersebut
+        if (activeTab) {
+          var tab = new bootstrap.Tab(document.querySelector('button[data-bs-target="' + activeTab + '"]'));
+          tab.show();
+        }
+
+        // Simpan tab yang aktif setiap kali user berpindah tab
+        document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(function(tab) {
+          tab.addEventListener('shown.bs.tab', function (event) {
+            var targetTab = event.target.getAttribute('data-bs-target');
+            localStorage.setItem('activeTab', targetTab); // Simpan ID tab ke localStorage
+          });
+        });
+      });
+    </script>
 @endpush

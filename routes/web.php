@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\TahunajaranController;
 use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PenilaiController;
 use App\Http\Controllers\Admin\IndikatornilaiController;
 use App\Http\Controllers\Admin\KepribadianController;
@@ -45,12 +46,20 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('tahunajaran', TahunajaranController::class);
     
         // GURU
+        Route::post('guruImportExcel', [GuruController::class, 'guruImportExcel'])->name('guruImportExcel');
         Route::get('deleteGuru/{id}', [GuruController::class, 'delete'])->name('delete');
         Route::resource('guru', GuruController::class);
     
         // PENILAI
+        Route::get('ambilGuruPenilai', [NilaiController::class, 'ambilGuruPenilai'])->name('ambilGuruPenilai');
+        Route::post('penilaiImportExcel', [PenilaiController::class, 'penilaiImportExcel'])->name('penilaiImportExcel');
         Route::get('deletePenilai/{id}', [PenilaiController::class, 'delete'])->name('delete');
         Route::resource('penilai', PenilaiController::class);
+
+        // USER
+        Route::post('userImportExcel', [UserController::class, 'userImportExcel'])->name('userImportExcel');
+        Route::get('deleteUser/{id}', [UserController::class, 'delete'])->name('delete');
+        Route::resource('user', UserController::class);
     
         // INDIKATORNILAI
         Route::get('deleteIndikator/{id}', [IndikatornilaiController::class, 'delete'])->name('delete');
@@ -62,6 +71,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('kepribadian', KepribadianController::class);
     
         // NILAI
+        Route::post('guru/cariGuru', [NilaiController::class, 'cariGuru'])->name('cariGuru');
+
+        Route::get('nilaiGrDetailCari/{id}', [NilaiController::class, 'nilaiGrDetailCari'])->name('nilaiGrDetailCari');
+
         Route::get('ambilGuru', [NilaiController::class, 'ambilGuru'])->name('ambilGuru'); 
 
         Route::get('nilai', [NilaiController::class, 'index'])->name('nilai');
@@ -95,5 +108,9 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('guru/{idguru}/tambahNilaiDs', [NilaiController::class, 'tambahNilaiDs'])->name('tambahNilaiDs'); // Tambah nilai untuk diri sendiri
 
         Route::post('guru/{idguru}/editNilaiDsAdmin', [NilaiController::class, 'editNilaiDsAdmin'])->name('editNilaiDsAdmin'); // Edit nilai diri sendiri dari admin
+
+        // HISTORY NILAI RK DAN OS
+        Route::get('historyRk/{idguru}', [NilaiController::class, 'historyRk'])->name('historyRk');
+        Route::get('historyOs/{idguru}', [NilaiController::class, 'historyOs'])->name('historyOs');
     });
 });

@@ -22,71 +22,86 @@ class WakaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'penamKepri' => 'required|max:2',
-            'sikerKepri' => 'required|max:2',
-            'maskerKepri' => 'required|max:2',
-            'kesetiaanpimKepri' => 'required|max:2',
-            'valuePeda' => 'required|max:2',
-            'manajkelasPeda' => 'required|max:2',
-            'lmsPeda' => 'required|max:2',
-            'modelpemPeda' => 'required|max:2',
-            'mediaPeda' => 'required|max:2',
-            'kualitaspemPeda' => 'required|max:2',
-            'samapendSos' => 'required|max:2',
-            'organisasiSos' => 'required|max:2',
-            'kompkeilmuProfesional' => 'required|max:2',
-            'kompdigProfesional' => 'required|max:2',
-            'seminarProfesional' => 'required|max:2',
+            'penamKepri' => 'required|numeric|max:100|min:60',
+            'sikerKepri' => 'required|numeric|max:100|min:60',
+            'maskerKepri' => 'required|numeric|max:100|min:60',
+            'kesetiaanpimKepri' => 'required|numeric|max:100|min:60',
+            'valuePeda' => 'required|numeric|max:100|min:60',
+            'manajkelasPeda' => 'required|numeric|max:100|min:60',
+            'lmsPeda' => 'required|numeric|max:100|min:60',
+            'modelpemPeda' => 'required|numeric|max:100|min:60',
+            'mediaPeda' => 'required|numeric|max:100|min:60',
+            'kualitaspemPeda' => 'required|numeric|max:100|min:60',
+            'samapendSos' => 'required|numeric|max:100|min:60',
+            'organisasiSos' => 'required|numeric|max:100|min:60',
+            'kompkeilmuProfesional' => 'required|numeric|max:100|min:60',
+            'kompdigProfesional' => 'required|numeric|max:100|min:60',
+            'seminarProfesional' => 'required|numeric|max:100|min:60',
         ];
     }
 
     public function messages()
     {
         return [
-            'penamKepri.required' => 'Penampilan tidak boleh kosong',
-            'penamKepri.max' => 'Penampilan nilai max 2 angka',
+            'penamKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'penamKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'penamKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'sikerKepri.required' => 'Sikap kerja tidak boleh kosong',
-            'sikerKepri.max' => 'Sikap kerja nilai max 2 angka',
+            'sikerKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'sikerKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'sikerKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'maskerKepri.required' => 'Masuk kerja tidak boleh kosong',
-            'maskerKepri.max' => 'Masuk kerja nilai max 2 angka',
+            'maskerKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'maskerKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'maskerKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'kesetiaanpimKepri.required' => 'Kesetiaan pada Pimpinan tidak boleh kosong',
-            'kesetiaanpimKepri.max' => 'Kesetiaan pada Pimpinan nilai max 2 angka',
+            'kesetiaanpimKepri.required' => 'Upss, nilai harus diisi yaa...',
+            'kesetiaanpimKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'kesetiaanpimKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'valuePeda.required' => 'Value SPECIAL tidak boleh kosong',
-            'valuePeda.max' => 'Value SPECIAL nilai max 2 angka',
+            'valuePeda.required' => 'Upss, nilai harus diisi yaa...',
+            'valuePeda.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'valuePeda.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'manajkelasPeda.required' => 'Manajemen kelas tidak boleh kosong',
-            'manajkelasPeda.max' => 'Manajemen kelas nilai max 2 angka',
+            'manajkelasPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'manajkelasPeda.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'manajkelasPeda.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'lmsPeda.required' => 'Penggunaan LMS tidak boleh kosong',
-            'lmsPeda.max' => 'Penggunaan LMS nilai max 2 angka',
+            'lmsPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'lmsPeda.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'lmsPeda.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'modelpemPeda.required' => 'Model pembelajaran tidak boleh kosong',
-            'modelpemPeda.max' => 'Model pembelajaran nilai max 2 angka',
+            'modelpemPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'modelpemPeda.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'modelpemPeda.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'mediaPeda.required' => 'Media Pembelajaran tidak boleh kosong',
-            'mediaPeda.max' => 'Media Pembelajaran nilai max 2 angka',
+            'mediaPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'mediaPeda.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'mediaPeda.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'kualitaspemPeda.required' => 'Kualitas Pembelajaran tidak boleh kosong',
-            'kualitaspemPeda.max' => 'Kualitas Pembelajaran nilai max 2 angka',
+            'kualitaspemPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'kualitaspemPeda.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'kualitaspemPeda.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'samapendSos.required' => 'Kerjasama dengan Pendidik tidak boleh kosong',
-            'samapendSos.max' => 'Kerjasama dengan Pendidik nilai max 2 angka',
+            'samapendSos.required' => 'Upss, nilai harus diisi yaa...',
+            'samapendSos.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'samapendSos.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'organisasiSos.required' => 'Organisasi/ Kegiatan Sekolah tidak boleh kosong',
-            'organisasiSos.max' => 'Organisasi/ Kegiatan Sekolah nilai max 2 angka',
+            'organisasiSos.required' => 'Upss, nilai harus diisi yaa...',
+            'organisasiSos.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'organisasiSos.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'kompkeilmuProfesional.required' => 'Kompetensi Keilmuan tidak boleh kosong',
-            'kompkeilmuProfesional.max' => 'Kompetensi Keilmuan nilai max 2 angka',
+            'kompkeilmuProfesional.required' => 'Upss, nilai harus diisi yaa...',
+            'kompkeilmuProfesional.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'kompkeilmuProfesional.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
 
-            'kompdigProfesional.required' => 'Kompetensi Digital tidak boleh kosong',
-            'kompdigProfesional.max' => 'Kompetensi Digital nilai max 2 angka',
+            'kompdigProfesional.required' => 'Upss, nilai harus diisi yaa...',
+            'kompdigProfesional.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'kompdigProfesional.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
             
-            'seminarProfesional.required' => 'Seminar / Literasi tidak boleh kosong',
-            'seminarProfesional.max' => 'Seminar / Literasi nilai max 2 angka',
+            'seminarProfesional.required' => 'Upss, nilai harus diisi yaa...',
+            'seminarProfesional.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
+            'seminarProfesional.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
         ];
     }
 }

@@ -37,9 +37,15 @@
         <div class="block-header block-header-default">
           <h3 class="block-title">
             Detail Nilai Guru {{$guru->nama}}
+            <br>
+            @if (auth()->user()->role == 'GURU')
+              <span class="text-danger">*nilai belum akan keluar sebelum semua menginputkan nilai</span>
+            @endif
           </h3>
           <a href="{{route('nilaiGuru')}}" class="btn btn-secondary mx-2">Kembali</a>
-          <a href="{{route('nilaiGrEdit', $guru->id)}}" class="btn btn-warning">Edit Nilai</a>
+          @if (auth()->user()->role == 'ADMIN')
+            <a href="{{route('nilaiGrEdit', $guru->id)}}" class="btn btn-warning">Edit Nilai</a>
+          @endif
         </div>
         <div class="block-content">
           <div class="table-responsive">
@@ -50,8 +56,12 @@
                   <th>Definisi</th>
                   <th style="width: 10%;">Waka Kurikulum</th>
                   <th style="width: 10%;">Kepala Sekolah</th>
-                  <th style="width: 10%;">Siswa / Orangtua</th>
-                  <th style="width: 10%;">Rekan Kerja</th>
+                  <th style="width: 10%;">Siswa / Orangtua <br> @if (auth()->user()->role == 'ADMIN')
+                    <a href="{{route('historyOs', $guru->id)}}" class="btn btn-primary btn-sm mt-2">History</a>
+                  @endif</th>
+                  <th style="width: 10%;">Rekan Kerja <br> @if (auth()->user()->role == 'ADMIN')
+                    <a href="{{route('historyRk', $guru->id)}}" class="btn btn-primary btn-sm mt-2">History</a>
+                  @endif</th>
                   <th style="width: 10%;">Diri Sendiri</th>
                 </tr>
               </thead>
@@ -571,6 +581,17 @@
                     <td class="text-center"></td>
                     <td class="text-center">
                       <b>{{$nilaiAkhir}}</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>Predikat</b></td>
+                    <td></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center">
+                      <b>{{$angkaNilai}}</b>
                     </td>
                   </tr>
                 </form>
