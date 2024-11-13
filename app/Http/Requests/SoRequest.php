@@ -22,39 +22,46 @@ class SoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'valuePeda' => 'required|max:2',
-            'manajPeda' => 'required|max:2',
-            'lmsPeda' => 'required|max:2',
-            'modelPeda' => 'required|max:2',
-            'mediaPeda' => 'required|max:2',
-            'kerjasoSos' => 'required|max:2',
-            'kompdigProfesional' => 'required|max:2',
+            'valuePeda' => 'required|numeric|max:10|min:6',
+            'manajPeda' => 'required|numeric|max:10|min:6',
+            'lmsPeda' => 'required|numeric|max:10|min:6',
+            'modelPeda' => 'required|numeric|max:10|min:6',
+            'mediaPeda' => 'required|numeric|max:10|min:6',
+            'kerjasoSos' => 'required|numeric|max:10|min:6',
+            'kompdigProfesional' => 'required|numeric|max:10|min:6',
         ];
     }
 
     public function messages()
     {
         return [
-            'valuePeda.required' => 'Value SPECIAL tidak boleh kosong',
-            'valuePeda.max' => 'Value SPECIAL nilai max 2 angka',
+            'valuePeda.required' => 'Upss, nilai harus diisi yaa...',
+            'valuePeda.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'valuePeda.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
-            'manajPeda.required' => 'Manajemen kelas tidak boleh kosong',
-            'manajPeda.max' => 'Manajemen kelas nilai max 2 angka',
+            'manajPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'manajPeda.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'manajPeda.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
-            'lmsPeda.required' => 'Penggunaan LMS tidak boleh kosong',
-            'lmsPeda.max' => 'Penggunaan LMS nilai max 2 angka',
+            'lmsPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'lmsPeda.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'lmsPeda.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
-            'modelPeda.required' => 'Model pembelajaran tidak boleh kosong',
-            'modelPeda.max' => 'Model pembelajaran nilai max 2 angka',
+            'modelPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'modelPeda.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'modelPeda.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
-            'mediaPeda.required' => 'Media Pembelajaran tidak boleh kosong',
-            'mediaPeda.max' => 'Media Pembelajaran nilai max 2 angka',
+            'mediaPeda.required' => 'Upss, nilai harus diisi yaa...',
+            'mediaPeda.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'mediaPeda.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
-            'kerjasoSos.required' => 'Kerjasama dengan Siswa/ Orang Tua tidak boleh kosong',
-            'kerjasoSos.max' => 'Kerjasama dengan Siswa/ Orang Tua nilai max 2 angka',
+            'kerjasoSos.required' => 'Upss, nilai harus diisi yaa...',
+            'kerjasoSos.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'kerjasoSos.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
-            'kompdigProfesional.required' => 'Kompetensi Digital tidak boleh kosong',
-            'kompdigProfesional.max' => 'Kompetensi Digital nilai max 2 angka',
+            'kompdigProfesional.required' => 'Upss, nilai harus diisi yaa...',
+            'kompdigProfesional.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'kompdigProfesional.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
         ];
     }
 }

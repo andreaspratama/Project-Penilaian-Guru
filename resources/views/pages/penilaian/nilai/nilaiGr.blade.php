@@ -39,7 +39,7 @@
           <h3 class="block-title">
             Nilai Guru {{$guru->nama}}
             <br>
-            <span class="text-danger blinking-text">*nilai yang diinputkan minimal 60, maksimal 100</span>
+            <span class="text-danger blinking-text">*nilai yang diinputkan minimal 6, maksimal 10</span>
           </h3>
         </div>
         <div class="block-content">
@@ -1108,8 +1108,13 @@
                             <input type="text" class="form-control" name="valuePeda" value="{{$sosem->valuePeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="valuePeda" value="{{old('valuePeda'), $sosem->valuePeda ?? ''}}">
+                          <input type="text" class="form-control @error('valuePeda') is-invalid @enderror" name="valuePeda" value="{{old('valuePeda'), $sosem->valuePeda ?? ''}}">
                         @endif
+                        @error('valuePeda')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </td>
                     </tr>
                     <tr>

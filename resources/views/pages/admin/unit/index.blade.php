@@ -49,8 +49,8 @@
             <table class="table table-bordered table-striped table-vcenter" id="unit">
               <thead>
                 <tr>
-                  <th class="text-center" style="width: 100px;">
-                    <i class="far fa-user"></i>
+                  <th class="text-center" style="width: 10%;">
+                    No
                   </th>
                   <th>Unit</th>
                   <th style="width: 30%;">Aksi</th>

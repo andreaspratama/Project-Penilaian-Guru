@@ -22,13 +22,13 @@ class RkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'perilakuKepri' => 'required|numeric|max:100|min:60',
-            'tuturkataKepri' => 'required|numeric|max:100|min:60',
-            'kepedulianKepri' => 'required|numeric|max:100|min:60',
-            'penampilanKepri' => 'required|numeric|max:100|min:60',
-            'sikerKepri' => 'required|numeric|max:100|min:60',
-            'samapendSos' => 'required|numeric|max:100|min:60',
-            'samatenpendSos' => 'required|numeric|max:100|min:60',
+            'perilakuKepri' => 'required|numeric|max:10|min:6',
+            'tuturkataKepri' => 'required|numeric|max:10|min:6',
+            'kepedulianKepri' => 'required|numeric|max:10|min:6',
+            'penampilanKepri' => 'required|numeric|max:10|min:6',
+            'sikerKepri' => 'required|numeric|max:10|min:6',
+            'samapendSos' => 'required|numeric|max:10|min:6',
+            'samatenpendSos' => 'required|numeric|max:10|min:6',
         ];
     }
 
@@ -36,32 +36,32 @@ class RkRequest extends FormRequest
     {
         return [
             'perilakuKepri.required' => 'Upss, nilai harus diisi yaa...',
-            'perilakuKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
-            'perilakuKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
+            'perilakuKepri.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'perilakuKepri.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
             'tuturkataKepri.required' => 'Upss, nilai harus diisi yaa...',
-            'tuturkataKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
-            'tuturkataKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
+            'tuturkataKepri.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'tuturkataKepri.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
             'kepedulianKepri.required' => 'Upss, nilai harus diisi yaa...',
-            'kepedulianKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
-            'kepedulianKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
+            'kepedulianKepri.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'kepedulianKepri.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
             'penampilanKepri.required' => 'Upss, nilai harus diisi yaa...',
-            'penampilanKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
-            'penampilanKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
+            'penampilanKepri.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'penampilanKepri.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
             'sikerKepri.required' => 'Upss, nilai harus diisi yaa...',
-            'sikerKepri.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
-            'sikerKepri.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
+            'sikerKepri.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'sikerKepri.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
             'samapendSos.required' => 'Upss, nilai harus diisi yaa...',
-            'samapendSos.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
-            'samapendSos.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
+            'samapendSos.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'samapendSos.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
 
             'samatenpendSos.required' => 'Upss, nilai harus diisi yaa...',
-            'samatenpendSos.max' => 'Upss, sorry nilai maksimal hanya 100 yaa...',
-            'samatenpendSos.min' => 'Upss, sorry nilai minimal harus 60 yaa...',
+            'samatenpendSos.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
+            'samatenpendSos.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
         ];
     }
 }
