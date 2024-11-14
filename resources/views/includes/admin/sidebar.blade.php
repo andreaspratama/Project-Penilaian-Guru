@@ -102,6 +102,13 @@
                       <span class="nav-main-link-name">Nilai</span>
                     </a>
                   </li>
+                  @if (auth()->user()->role == 'GURU')
+                    <li class="nav-main-item">
+                      <a class="nav-main-link" href="{{route('nilaiGuruRekan')}}">
+                        <span class="nav-main-link-name">Nilai Rekan Kerja</span>
+                      </a>
+                    </li>
+                  @endif
                   <li class="nav-main-item">
                     @if(!in_array(Auth::user()->role, ['GURU', 'RK', 'OS']))
                         <a class="nav-main-link" href="{{ route('nilai') }}">

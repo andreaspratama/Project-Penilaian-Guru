@@ -15,8 +15,15 @@
             Dashboard
           </h1>
           <h2 class="h6 fw-medium fw-medium text-muted mb-0">
-            Welcome <a class="fw-semibold" href="be_pages_generic_profile.html">{{auth()->user()->name}}</a>
+            {{-- Welcome <a class="fw-semibold" href="be_pages_generic_profile.html">{{auth()->user()->name}}</a> --}}
           </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="text-align:center; margin-top: 60px">
+          <h2>Selamat datang {{auth()->user()->name}}</h2>
+          <h3>Sistem Penilaian Guru YSKI</h3>
+          <img src="{{url('gambar/gambardepan.png')}}" alt="" style="width: 250px; height:80px; display:block; margin-left:auto; margin-right:auto">
         </div>
       </div>
     </div>

@@ -119,6 +119,13 @@ class NilaiController extends Controller
         return view('pages.penilaian.nilai.nilaiCoba', compact('gurus'));
     }
 
+    public function nilaiGuruRekan()
+    {
+        $gurus = Guru::all();
+
+        return view('pages.penilaian.nilai.nilaiGuruRekan', compact('gurus'));
+    }
+
     public function nilaiGr($id)
     {
         $ta = Tahunajaran::where('status', 'Aktif')->get();

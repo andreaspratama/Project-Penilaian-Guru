@@ -53,4 +53,9 @@ class Guru extends Model
     {
         return $this->belongsToMany(Penilai::class);
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

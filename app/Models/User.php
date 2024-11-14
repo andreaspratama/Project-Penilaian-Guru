@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Penilai::class);
     }
+
+    public function guru(): HasOne
+    {
+        return $this->hasOne(Guru::class);
+    }
 }

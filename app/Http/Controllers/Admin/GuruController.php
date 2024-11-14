@@ -37,7 +37,17 @@ class GuruController extends Controller
                     static $count = 0;
                     return ++$count;
                 })
-                ->rawColumns(['aksi', 'number'])
+                ->addColumn('dinilai', function($item) {
+                    // Ambil ID dari kolom `dinilai` dan ubah menjadi array
+                    $dinilaiIds = explode(',', $item->dinilai);
+    
+                    // Ambil nama guru berdasarkan ID di array
+                    $namaGuru = Guru::whereIn('id', $dinilaiIds)->pluck('nama')->toArray();
+    
+                    // Gabungkan nama guru menjadi string dipisah koma atau format lain
+                    return implode(', ', $namaGuru);
+                })
+                ->rawColumns(['aksi', 'number', 'dinilai'])
                 ->make();
         }
 
@@ -67,9 +77,16 @@ class GuruController extends Controller
         $user->role = 'GURU';
         $user->save();
 
-        // INSERT KE TABEL GURU
-        $request->request->add(['user_id' => $user->id]);
-        Guru::create($request->all());
+        $dinilai = implode(',', $request['dinilai']);
+
+        // INSERT KE TABLE PENILAI
+        $guru = new Guru();
+        $guru->nama = $request->nama;
+        $guru->email = $request->email;
+        $guru->unit_id = $request->unit_id;
+        $guru->user_id = $user->id;
+        $guru->dinilai = $dinilai;
+        $guru->save();
 
         return redirect()->route('guru.index')->with('success', 'Data berhasil dimasukan. Good job');
     }
@@ -89,8 +106,9 @@ class GuruController extends Controller
     {
         $units = Unit::all();
         $item = Guru::findOrFail($id);
+        $gurus = Guru::all();
 
-        return view('pages.admin.guru.edit', compact('item', 'units'));
+        return view('pages.admin.guru.edit', compact('item', 'units', 'gurus'));
     }
 
     /**
@@ -98,7 +116,11 @@ class GuruController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $data = Guru::findOrFail($id);
+        $dinilai = is_array($data['dinilai']) ? implode(',', $data['dinilai']) : $data['dinilai'];
+
         $data = $request->all();
+        $data['dinilai'] = is_array($request->dinilai) ? implode(',', $request->dinilai) : $request->dinilai;
         $item = Guru::findOrFail($id);
         $item->update($data);
 

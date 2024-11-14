@@ -39,7 +39,18 @@
           <h3 class="block-title">
             Nilai Guru {{$guru->nama}}
             <br>
-            <span class="text-danger blinking-text">*nilai yang diinputkan minimal 6, maksimal 10</span>
+            <br>
+            <span class="text-danger">*ketentuan point penilaian</span>
+            <br>
+            <span>10 - Sangat baik (Sangat banyak di atas standar)</span>
+            <br>
+            <span>9 - Baik (Banyak di atas standar)</span>
+            <br>
+            <span>8 - Cukup (Sesuai dengan standar)</span>
+            <br>
+            <span>7 - Kurang (Banyak yang di bawah standar)</span>
+            <br>
+            <span>6 - Sangat kurang (Sangat banyak di bawah standar)</span>
           </h3>
         </div>
         <div class="block-content">
@@ -1126,8 +1137,13 @@
                             <input type="text" class="form-control" name="manajPeda" value="{{$sosem->manajPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="manajPeda" value="{{old('manajPeda'), $sosem->manajPeda ?? ''}}">                        
+                          <input type="text" class="form-control @error('manajPeda') is-invalid @enderror" name="manajPeda" value="{{old('manajPeda'), $sosem->manajPeda ?? ''}}">                        
                         @endif
+                        @error('manajPeda')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </td>
                     </tr>
                     <tr>
@@ -1139,8 +1155,13 @@
                             <input type="text" class="form-control" name="lmsPeda" value="{{$sosem->lmsPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="lmsPeda" value="{{old('lmsPeda'), $sosem->lmsPeda ?? ''}}">                       
+                          <input type="text" class="form-control @error('lmsPeda') is-invalid @enderror" name="lmsPeda" value="{{old('lmsPeda'), $sosem->lmsPeda ?? ''}}">                       
                         @endif
+                        @error('lmsPeda')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </td>
                     </tr>
                     <tr>
@@ -1152,8 +1173,13 @@
                             <input type="text" class="form-control" name="modelPeda" value="{{$sosem->modelPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="modelPeda" value="{{old('modelPeda'), $sosem->modelPeda ?? ''}}">                       
+                          <input type="text" class="form-control @error('modelPeda') is-invalid @enderror" name="modelPeda" value="{{old('modelPeda'), $sosem->modelPeda ?? ''}}">                       
                         @endif
+                        @error('modelPeda')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </td>
                     </tr>
                     <tr>
@@ -1165,8 +1191,13 @@
                             <input type="text" class="form-control" name="mediaPeda" value="{{$sosem->mediaPeda}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="mediaPeda" value="{{old('mediaPeda'), $sosem->mediaPeda ?? ''}}">                    
+                          <input type="text" class="form-control @error('mediaPeda') is-invalid @enderror" name="mediaPeda" value="{{old('mediaPeda'), $sosem->mediaPeda ?? ''}}">                    
                         @endif
+                        @error('mediaPeda')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </td>
                     </tr>
                     <tr>
@@ -1183,8 +1214,13 @@
                             <input type="text" class="form-control" name="kerjasoSos" value="{{$sosem->kerjasoSos}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kerjasoSos" value="{{old('kerjasoSos'), $sosem->kerjasoSos ?? ''}}">                    
+                          <input type="text" class="form-control @error('kerjasoSos') is-invalid @enderror" name="kerjasoSos" value="{{old('kerjasoSos'), $sosem->kerjasoSos ?? ''}}">                    
                         @endif
+                        @error('kerjasoSos')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </td>
                     </tr>
                     <tr>
@@ -1201,8 +1237,13 @@
                             <input type="text" class="form-control" name="kompdigProfesional" value="{{$sosem->kompdigProfesional}}" disabled>
                           @endif
                         @else
-                          <input type="text" class="form-control" name="kompdigProfesional" value="{{old('kompdigProfesional'), $sosem->kompdigProfesional ?? ''}}">                    
+                          <input type="text" class="form-control @error('kompdigProfesional') is-invalid @enderror" name="kompdigProfesional" value="{{old('kompdigProfesional'), $sosem->kompdigProfesional ?? ''}}">                    
                         @endif
+                        @error('kompdigProfesional')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                       </td>
                     </tr>
                     <tr>
@@ -1393,179 +1434,347 @@
                     </tr>
                   </form>
                 @elseif(auth()->user()->role == 'GURU')
-                  <form action="/dp3guru/guru/{{$guru->id}}/tambahNilaiDs" method="POST">
-                    @csrf
-                    <input type="hidden" name="id" value="{{ $ds->id ?? '' }}">
-                    <input type="hidden" name="guru_id" value="{{$guru->id}}">
-                    <tr>
-                      <th>Aspek Kepribadian</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                    <tr>
-                      <td>Kepedulian</td>
-                      <td>Terhadap sesama dan lingkungan sekolah</td>
-                      <td>
-                        @if ($ds)
-                          @if (auth()->user()->role == 'GURU')
-                            <input type="text" class="form-control" name="kepedulianKepri" value="{{$ds->kepedulianKepri}}" disabled>
+                  @if ($guru->user_id == auth()->user()->id)
+                  <p>nilai dirisendiri</p>
+                    <form action="/dp3guru/guru/{{$guru->id}}/tambahNilaiDs" method="POST">
+                      @csrf
+                      <input type="hidden" name="id" value="{{ $ds->id ?? '' }}">
+                      <input type="hidden" name="guru_id" value="{{$guru->id}}">
+                      <tr>
+                        <th>Aspek Kepribadian</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td>Kepedulian</td>
+                        <td>Terhadap sesama dan lingkungan sekolah</td>
+                        <td>
+                          @if ($ds)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="kepedulianKepri" value="{{$ds->kepedulianKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('kepedulianKepri') is-invalid @enderror" name="kepedulianKepri" value="{{old('kepedulianKepri'), $ds->kepedulianKepri ?? ''}}">
                           @endif
-                        @else
-                          <input type="text" class="form-control @error('kepedulianKepri') is-invalid @enderror" name="kepedulianKepri" value="{{old('kepedulianKepri'), $ds->kepedulianKepri ?? ''}}">
-                        @endif
-                        @error('kepedulianKepri')
-                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Persekutuan Doa/ Ibadah</td>
-                      <td>Keaktifan (hadir dan terlibat)</td>
-                      <td>
-                        @if ($ds)
-                          @if (auth()->user()->role == 'GURU')
-                            <input type="text" class="form-control" name="persekutuanKepri" value="{{$ds->persekutuanKepri}}" disabled>
+                          @error('kepedulianKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Persekutuan Doa/ Ibadah</td>
+                        <td>Keaktifan (hadir dan terlibat)</td>
+                        <td>
+                          @if ($ds)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="persekutuanKepri" value="{{$ds->persekutuanKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('persekutuanKepri') is-invalid @enderror" name="persekutuanKepri" value="{{old('persekutuanKepri'), $ds->persekutuanKepri ?? ''}}">
                           @endif
-                        @else
-                          <input type="text" class="form-control @error('persekutuanKepri') is-invalid @enderror" name="persekutuanKepri" value="{{old('persekutuanKepri'), $ds->persekutuanKepri ?? ''}}">
-                        @endif
-                        @error('persekutuanKepri')
-                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Kesetiaan pada YSKI</td>
-                      <td>Kepatuhan  terhadap peraturan kepegawaian, Pelaksanaan tugas/ kesepakatan</td>
-                      <td>
-                        @if ($ds)
-                          @if (auth()->user()->role == 'GURU')
-                            <input type="text" class="form-control" name="kesetiaanyskiKepri" value="{{$ds->kesetiaanyskiKepri}}" disabled>
+                          @error('persekutuanKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Kesetiaan pada YSKI</td>
+                        <td>Kepatuhan  terhadap peraturan kepegawaian, Pelaksanaan tugas/ kesepakatan</td>
+                        <td>
+                          @if ($ds)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="kesetiaanyskiKepri" value="{{$ds->kesetiaanyskiKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('kesetiaanyskiKepri') is-invalid @enderror" name="kesetiaanyskiKepri" value="{{old('kesetiaanyskiKepri'), $ds->kesetiaanyskiKepri ?? ''}}">
                           @endif
-                        @else
-                          <input type="text" class="form-control @error('kesetiaanyskiKepri') is-invalid @enderror" name="kesetiaanyskiKepri" value="{{old('kesetiaanyskiKepri'), $ds->kesetiaanyskiKepri ?? ''}}">
-                        @endif
-                        @error('kesetiaanyskiKepri')
-                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Kesetiaan pada Pimpinan</td>
-                      <td>Kepatuhan terhadap perintah pimpinan dan keputusan bersama</td>
-                      <td>
-                        @if ($ds)
-                          @if (auth()->user()->role == 'GURU')
-                            <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{$ds->kesetiaanpimKepri}}" disabled>
+                          @error('kesetiaanyskiKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Kesetiaan pada Pimpinan</td>
+                        <td>Kepatuhan terhadap perintah pimpinan dan keputusan bersama</td>
+                        <td>
+                          @if ($ds)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="kesetiaanpimKepri" value="{{$ds->kesetiaanpimKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('kesetiaanpimKepri') is-invalid @enderror" name="kesetiaanpimKepri" value="{{old('kesetiaanpimKepri'), $ds->kesetiaanpimKepri ?? ''}}">
                           @endif
-                        @else
-                          <input type="text" class="form-control @error('kesetiaanpimKepri') is-invalid @enderror" name="kesetiaanpimKepri" value="{{old('kesetiaanpimKepri'), $ds->kesetiaanpimKepri ?? ''}}">
-                        @endif
-                        @error('kesetiaanpimKepri')
-                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Aspek Pedagogi</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                    <tr>
-                      <td>Model pembelajaran</td>
-                      <td>Flipped classroom, 4C dan menyenangkan</td>
-                      <td>
-                        @if ($ds)
-                          @if (auth()->user()->role == 'GURU')
-                            <input type="text" class="form-control" name="modelPeda" value="{{$ds->modelPeda}}" disabled>
+                          @error('kesetiaanpimKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Aspek Pedagogi</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td>Model pembelajaran</td>
+                        <td>Flipped classroom, 4C dan menyenangkan</td>
+                        <td>
+                          @if ($ds)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="modelPeda" value="{{$ds->modelPeda}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('modelPeda') is-invalid @enderror" name="modelPeda" value="{{old('modelPeda'), $ds->modelPeda ?? ''}}">
                           @endif
-                        @else
-                          <input type="text" class="form-control @error('modelPeda') is-invalid @enderror" name="modelPeda" value="{{old('modelPeda'), $ds->modelPeda ?? ''}}">
-                        @endif
-                        @error('modelPeda')
-                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Aspek Sosial</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                    <tr>
-                      <td>Kerjasama dengan Siswa / Orang Tua</td>
-                      <td>Komunikasi dan relasi yang baik </td>
-                      <td>
-                        @if ($ds)
-                          @if (auth()->user()->role == 'GURU')
-                            <input type="text" class="form-control" name="samaortuSos" value="{{$ds->samaortuSos}}" disabled>
+                          @error('modelPeda')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Aspek Sosial</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td>Kerjasama dengan Siswa / Orang Tua</td>
+                        <td>Komunikasi dan relasi yang baik </td>
+                        <td>
+                          @if ($ds)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="samaortuSos" value="{{$ds->samaortuSos}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('samaortuSos') is-invalid @enderror" name="samaortuSos" value="{{old('samaortuSos'), $ds->samaortuSos ?? ''}}">
                           @endif
-                        @else
-                          <input type="text" class="form-control @error('samaortuSos') is-invalid @enderror" name="samaortuSos" value="{{old('samaortuSos'), $ds->samaortuSos ?? ''}}">
-                        @endif
-                        @error('samaortuSos')
-                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Aspek Profesional</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                    <tr>
-                      <td>Kompetensi Keilmuan</td>
-                      <td>Pengembangan keilmuan, prestasi</td>
-                      <td>
-                        @if ($ds)
-                          @if (auth()->user()->role == 'GURU')
-                            <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$ds->kompkeilmuProfesional}}" disabled>
+                          @error('samaortuSos')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Aspek Profesional</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td>Kompetensi Keilmuan</td>
+                        <td>Pengembangan keilmuan, prestasi</td>
+                        <td>
+                          @if ($ds)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="kompkeilmuProfesional" value="{{$ds->kompkeilmuProfesional}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('kompkeilmuProfesional') is-invalid @enderror" name="kompkeilmuProfesional" value="{{old('kompkeilmuProfesional'), $ds->kompkeilmuProfesional ?? ''}}">
                           @endif
-                        @else
-                          <input type="text" class="form-control @error('kompkeilmuProfesional') is-invalid @enderror" name="kompkeilmuProfesional" value="{{old('kompkeilmuProfesional'), $ds->kompkeilmuProfesional ?? ''}}">
-                        @endif
-                        @error('kompkeilmuProfesional')
-                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><b>Hasil</b></td>
-                      <td></td>
-                      <td>
-                        @if ($ds)
-                          {{$ds->hasil}}
-                        @else
-                          <b>Nilai belum diinputkan</b>
-                        @endif
-                      </td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        @if ($ds)
-                            <b>Terimakasih sudah mengisi nilai</b>
-                        @else
-                          <button class="btn btn-primary" type="submit">Simpan</button>
-                        @endif
-                      </td>
-                    </tr>
-                  </form>
+                          @error('kompkeilmuProfesional')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><b>Hasil</b></td>
+                        <td></td>
+                        <td>
+                          @if ($ds)
+                            {{$ds->hasil}}
+                          @else
+                            <b>Nilai belum diinputkan</b>
+                          @endif
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          @if ($ds)
+                              <b>Terimakasih sudah mengisi nilai</b>
+                          @else
+                            <button class="btn btn-primary" type="submit">Simpan</button>
+                          @endif
+                        </td>
+                      </tr>
+                    </form> 
+                  @else
+                    <p>nilai rekan</p>
+                    <form action="/dp3guru/guru/{{$guru->id}}/tambahNilaiRk" method="POST">
+                      @csrf
+                      <input type="hidden" name="id" value="{{ $rk->id ?? '' }}">
+                      <input type="hidden" name="guru_id" value="{{$guru->id}}">
+                      <tr>
+                        <th>Aspek Kepribadian</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td>Perilaku</td>
+                        <td>Kesesuaian dengan Iman dan etika Kristen</td>
+                        <td>
+                          @if ($rksem)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="perilakuKepri" value="{{$rksem->perilakuKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('perilakuKepri') is-invalid @enderror" name="perilakuKepri" value="{{old('perilakuKepri'), $rksem->perilakuKepri ?? ''}}">
+                          @endif
+                          @error('perilakuKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tutur Kata</td>
+                        <td>Kesesuaian dengan Iman dan etika Kristen</td>
+                        <td>
+                          @if ($rksem)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="tuturkataKepri" value="{{$rksem->tuturkataKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('tuturkataKepri') is-invalid @enderror" name="tuturkataKepri" value="{{old('tuturkataKepri'), $rksem->tuturkataKepri ?? ''}}">
+                          @endif
+                          @error('tuturkataKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Kepedulian</td>
+                        <td>Terhadap sesama dan lingkungan sekolah</td>
+                        <td>
+                          @if ($rksem)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="kepedulianKepri" value="{{$rksem->kepedulianKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('kepedulianKepri') is-invalid @enderror" name="kepedulianKepri" value="{{old('kepedulianKepri'), $rksem->kepedulianKepri ?? ''}}">
+                          @endif
+                          @error('kepedulianKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Penampilan</td>
+                        <td>Bersih, rapi dan sopan</td>
+                        <td>
+                          @if ($rksem)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="penampilanKepri" value="{{$rksem->penampilanKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('penampilanKepri') is-invalid @enderror" name="penampilanKepri" value="{{old('penampilanKepri'), $rksem->penampilanKepri ?? ''}}">
+                          @endif
+                          @error('penampilanKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Sikap Kerja</td>
+                        <td>Aktif dan positif</td>
+                        <td>
+                          @if ($rksem)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="sikerKepri" value="{{$rksem->sikerKepri}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('sikerKepri') is-invalid @enderror" name="sikerKepri" value="{{old('sikerKepri'), $rksem->sikerKepri ?? ''}}">
+                          @endif
+                          @error('sikerKepri')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Aspek Sosial</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td>Kerjasama dengan Pendidik</td>
+                        <td>Komunikasi dan relasi yang baik, Pelaksanaan tugas bersama, Berbagi pengetahuan dan pemahaman keilmuan</td>
+                        <td>
+                          @if ($rksem)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="samapendSos" value="{{$rksem->samapendSos}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('samapendSos') is-invalid @enderror" name="samapendSos" value="{{old('samapendSos'), $rksem->samapendSos ?? ''}}">
+                          @endif
+                          @error('samapendSos')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Kerjasama dengan Tenaga Kependidikan</td>
+                        <td>Komunikasi dan relasi yang baik, Pelaksanaan tugas bersama</td>
+                        <td>
+                          @if ($rksem)
+                            @if (auth()->user()->role == 'GURU')
+                              <input type="text" class="form-control" name="samatenpendSos" value="{{$rksem->samatenpendSos}}" disabled>
+                            @endif
+                          @else
+                            <input type="text" class="form-control @error('samatenpendSos') is-invalid @enderror" name="samatenpendSos" value="{{old('samatenpendSos'), $rksem->samatenpendSos ?? ''}}">
+                          @endif
+                          @error('samatenpendSos')
+                              <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><b>Hasil</b></td>
+                        <td></td>
+                        <td>
+                          @if ($rksem)
+                            {{$rksem->hasil}}
+                          @else
+                            <b>Nilai belum diinputkan</b>
+                          @endif
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          @if ($rksem)
+                              <b>Terimakasih sudah mengisi nilai</b>
+                          @else
+                            <button class="btn btn-primary" type="submit">Simpan</button>
+                          @endif
+                        </td>
+                      </tr>
+                    </form>
+                  @endif
                 @endif
               </tbody>
             </table>

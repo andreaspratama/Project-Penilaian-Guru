@@ -49,7 +49,7 @@
               </div>
               <div class="mb-4">
                 <label class="form-label" for="unit_id">Unit</label>
-                <select class="form-select" id="unit_id" name="unit_id">
+                <select class="form-select" id="unit" name="unit_id">
                   <option selected="">-- Pilih --</option>
                   @foreach ($units as $un)
                     <option value="{{$un->id}}">{{$un->nama}}</option>
@@ -59,6 +59,12 @@
               <div class="mb-4">
                 <label class="form-label" for="email">Email</label>
                 <input type="text" class="form-control" id="email" name="email">
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="dinilai">Yang Dinilai</label>
+                <select class="form-select js-example-basic-multiple" aria-label="Default select example" name="dinilai[]" id="guru" multiple>
+                  <option value="">Pilih Guru</option>
+                </select>
               </div>
               <div>
                 <button class="btn btn-primary" type="submit">Tambah Data</button>
@@ -75,3 +81,36 @@
 </main>
 <!-- END Main Container -->
 @endsection
+
+@push('prepend-style')
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
+@push('addon-script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#unit').on('change', function () {
+                var unitId = this.value;
+                $('#guru').html('');
+                $.ajax({
+                    url: '{{ route('ambilGuru') }}?unit_id='+unitId,
+                    type: 'get',
+                    success: function (res) {
+                        $('#guru').html('<option value="">Pilih Guru</option>');
+                        $.each(res, function (key, value) {
+                            $('#guru').append('<option value="' + value
+                                .id + '">' + value.nama + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+      $(document).ready(function() {
+          $('.js-example-basic-multiple').select2();
+      });
+    </script>
+@endpush

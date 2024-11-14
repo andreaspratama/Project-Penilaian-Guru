@@ -55,6 +55,7 @@
                   <th>Nama</th>
                   <th>Unit</th>
                   <th>Email</th>
+                  <th>Rekan Yang Dinilai</th>
                   <th style="width: 30%;">Aksi</th>
                 </tr>
               </thead>
@@ -137,6 +138,7 @@
                 {data: 'nama', name: 'nama'},
                 {data: 'unit.nama', name: 'unit.nama'},
                 {data: 'email', name: 'email'},
+                { data: 'dinilai', name: 'dinilai' },
                 {
                   data: 'aksi',
                   name: 'aksi',

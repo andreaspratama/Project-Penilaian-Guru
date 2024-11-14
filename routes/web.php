@@ -81,6 +81,8 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::get('nilaiGuru', [NilaiController::class, 'nilaiGuru'])->name('nilaiGuru');
 
+        Route::get('nilaiGuruRekan', [NilaiController::class, 'nilaiGuruRekan'])->name('nilaiGuruRekan');
+
         Route::get('nilaiGr/{id}', [NilaiController::class, 'nilaiGr'])->name('nilaiGr');
 
         Route::get('prosNilaiGr/{idguru}', [NilaiController::class, 'prosNilaiGr'])->name('prosNilaiGr');

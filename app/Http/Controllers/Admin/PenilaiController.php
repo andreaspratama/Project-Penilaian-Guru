@@ -38,7 +38,17 @@ class PenilaiController extends Controller
                     static $count = 0;
                     return ++$count;
                 })
-                ->rawColumns(['aksi', 'number'])
+                ->addColumn('dinilai', function($item) {
+                    // Ambil ID dari kolom `dinilai` dan ubah menjadi array
+                    $dinilaiIds = explode(',', $item->dinilai);
+    
+                    // Ambil nama guru berdasarkan ID di array
+                    $namaGuru = Guru::whereIn('id', $dinilaiIds)->pluck('nama')->toArray();
+    
+                    // Gabungkan nama guru menjadi string dipisah koma atau format lain
+                    return implode(', ', $namaGuru);
+                })
+                ->rawColumns(['aksi', 'number', 'dinilai'])
                 ->make();
         }
 

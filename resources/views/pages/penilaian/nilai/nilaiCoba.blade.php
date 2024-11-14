@@ -49,6 +49,12 @@
                   $dinilaiIds = explode(',', auth()->user()->penilai->dinilai);
               @endphp                
             @endif
+            @if (auth()->user()->role == 'GURU')
+              @php
+                  // Ubah string dinilai yang dipisahkan koma menjadi array
+                  $dinilaiIds = explode(',', auth()->user()->guru->dinilai);
+              @endphp                
+            @endif
           </h3>
         </div>
         <div class="block-content">
@@ -77,6 +83,16 @@
                           </td>
                         </tr>
                       @endif
+                  @elseif(auth()->user()->role == 'GURU')
+                        @if (in_array($gr->id, $dinilaiIds))
+                          <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $gr->nama }}</td>
+                            <td>
+                                <a href="{{ route('nilaiGr', $gr->id) }}" class="btn btn-primary">Nilai</a>
+                            </td>
+                          </tr>
+                        @endif
                   @elseif(auth()->user()->role == 'ADMIN')
                     <tr>
                       <td>{{ $no++ }}</td>
@@ -122,7 +138,7 @@
                         <td>{{$gr->nama}}</td>
                         <td>
                             <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a>
-                            <a href="{{route('nilaiGrDetail', $gr->id)}}" class="btn btn-warning">Detail Nilai</a>
+                            {{-- <a href="{{route('nilaiGrDetail', $gr->id)}}" class="btn btn-warning">Detail Nilai</a> --}}
                         </td>
                       </tr>
                     @endif
