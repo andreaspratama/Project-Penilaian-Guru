@@ -127,7 +127,41 @@
             });
         });
     </script> --}}
+
     <script type="text/javascript">
+      $(document).ready(function () {
+          // Fungsi untuk memuat guru sesuai unit
+          function loadGuru(unitId, selected = []) {
+              $('#guru').html(''); // Kosongkan dulu dropdown
+              $.ajax({
+                  url: '{{ route('ambilGuru') }}?unit_id=' + unitId,
+                  type: 'get',
+                  success: function (res) {
+                      $('#guru').html('<option value="">Pilih Guru</option>'); // Tambahkan opsi default
+                      $.each(res, function (key, value) {
+                          let isSelected = selected.includes(value.nama) ? 'selected' : ''; // Menggunakan nama guru untuk seleksi
+                          $('#guru').append('<option value="' + value.id + '" ' + isSelected + '>' + value.nama + '</option>');
+                      });
+                  }
+              });
+          }
+    
+          // Saat unit diubah
+          $('#unit').on('change', function () {
+              var unitId = $(this).val(); // Ambil nilai unit yang dipilih
+              loadGuru(unitId); // Panggil fungsi untuk memuat guru sesuai unit yang dipilih
+          });
+    
+          // Jika halaman dalam mode edit, kita muat guru yang sesuai dengan unit terpilih
+          var unitId = $('#unit').data('unit-id');
+          if (unitId) {
+              var selectedDinilai = {!! json_encode($selectedDinilai) !!}; // Ambil array nama guru yang sudah dipilih
+              loadGuru(unitId, selectedDinilai); // Panggil fungsi untuk memuat guru yang sesuai dengan unit saat halaman dimuat
+          }
+      });
+    </script>
+    
+    {{-- <script type="text/javascript">
       $(document).ready(function () {
           // Fungsi untuk memuat guru sesuai unit
           function loadGuru(unitId, selected = []) {
@@ -158,7 +192,7 @@
               loadGuru(unitId, selectedDinilai); // Muat guru yang sesuai dengan unit saat halaman dimuat
           }
       });
-  </script>
+    </script> --}}
     <script>
       $(document).ready(function() {
           $('.js-example-basic-multiple').select2();

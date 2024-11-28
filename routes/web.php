@@ -89,6 +89,8 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::get('nilaiGrDetail/{id}', [NilaiController::class, 'nilaiGrDetail'])->name('nilaiGrDetail');
 
+        Route::get('nilaiGrDetailKs/{id}', [NilaiController::class, 'nilaiGrDetailKs'])->name('nilaiGrDetailKs');
+
         Route::get('nilaiGrEdit/{id}', [NilaiController::class, 'nilaiGrEdit'])->name('nilaiGrEdit'); // Edit nilai per guru
 
         Route::post('guru/{idguru}/tambahNilai', [NilaiController::class, 'tambahNilaiKs'])->name('tambahNilai'); // Tambah nilai untuk ks
@@ -114,5 +116,9 @@ Route::group(['middleware' => 'auth'], function(){
         // HISTORY NILAI RK DAN OS
         Route::get('historyRk/{idguru}', [NilaiController::class, 'historyRk'])->name('historyRk');
         Route::get('historyOs/{idguru}', [NilaiController::class, 'historyOs'])->name('historyOs');
+
+        // UBAH PASSWORD
+        Route::get('ubahPassword', [NilaiController::class, 'ubahPassword'])->name('ubahPassword');
+        Route::post('ubahPasswordProses', [NilaiController::class, 'ubahPasswordProses'])->name('ubahPasswordProses');
     });
 });

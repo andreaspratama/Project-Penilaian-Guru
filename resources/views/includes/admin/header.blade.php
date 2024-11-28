@@ -24,17 +24,6 @@
         <i class="fa fa-fw fa-search"></i>
       </button>
       <!-- END Open Search Section -->
-
-      <!-- Search Form (visible on larger screens) -->
-      <form class="d-none d-md-inline-block" action="be_pages_generic_search.html" method="POST">
-        <div class="input-group input-group-sm">
-          <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
-          <span class="input-group-text border-0">
-            <i class="fa fa-fw fa-search"></i>
-          </span>
-        </div>
-      </form>
-      <!-- END Search Form -->
     </div>
     <!-- END Left Section -->
 
@@ -49,6 +38,9 @@
         </button>
       </div>
       <!-- END User Dropdown -->
+      <div class="d-inline-block ms-2">
+        <a href="{{route('ubahPassword')}}" class="btn btn-sm btn-alt-secondary d-flex align-items-center" style="background-color: #3366cc; color: #fff">Ubah Password</a>
+      </div>
       <div class="d-inline-block ms-2">
         <a href="{{route('logout')}}" class="btn btn-sm btn-alt-secondary d-flex align-items-center" style="background-color: red; color: #fff">Log Out</a>
       </div>

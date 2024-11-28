@@ -31,6 +31,7 @@ class PenilaiImport implements ToModel
                 'unit_id' => $unit->id ?? NULL,
                 'user_id' => $user->id ?? NULL,
                 'role' => $row[3],
+                'dinilai' => $row[4],
             ]);
         }    
 }

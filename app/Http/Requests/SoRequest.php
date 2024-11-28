@@ -29,6 +29,7 @@ class SoRequest extends FormRequest
             'mediaPeda' => 'required|numeric|max:10|min:6',
             'kerjasoSos' => 'required|numeric|max:10|min:6',
             'kompdigProfesional' => 'required|numeric|max:10|min:6',
+            'comment' => 'required|max:200|min:20',
         ];
     }
 
@@ -62,6 +63,10 @@ class SoRequest extends FormRequest
             'kompdigProfesional.required' => 'Upss, nilai harus diisi yaa...',
             'kompdigProfesional.max' => 'Upss, sorry nilai maksimal hanya 10 yaa...',
             'kompdigProfesional.min' => 'Upss, sorry nilai minimal harus 6 yaa...',
+
+            'comment.required' => 'Upss, komentar harus diisi yaa...',
+            'comment.max' => 'Upss, sorry komentar maksimal hanya 200 karakter yaa...',
+            'comment.min' => 'Upss, sorry komentar minimal harus 20 karakter yaa...',
         ];
     }
 }

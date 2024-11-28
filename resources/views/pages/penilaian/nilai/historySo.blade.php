@@ -57,6 +57,7 @@
                   <th>Media Pembelajaran</th>
                   <th>Kerjasama dengan Siswa/ Orang Tua</th>
                   <th>Kompetensi Digital</th>
+                  <th>Komentar</th>
                   <th>Total</th>
                 </tr>
               </thead>
@@ -76,6 +77,7 @@
                             <td>{{$item->mediaPeda}}</td>
                             <td>{{$item->kerjasoSos}}</td>
                             <td>{{$item->kompdigProfesional}}</td>
+                            <td>{{$item->comment}}</td>
                             <td>{{$item->hasil}}</td>
                         </tr>
                     @endif

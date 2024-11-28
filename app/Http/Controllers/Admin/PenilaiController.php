@@ -92,10 +92,10 @@ class PenilaiController extends Controller
             'unit_id' => 'required',
             'email' => 'required|email',
             'role' => 'required',
-            'dinilai' => 'array', // Pastikan dinilai adalah array
+            'dinilai' => 'nullable|array', // Pastikan dinilai adalah array
         ]);
 
-        $dinilai = implode(',', $validatedData['dinilai']);
+        $dinilai = isset($validatedData['dinilai']) ? implode(',', $validatedData['dinilai']) : null;
 
         // INSERT KE TABLE PENILAI
         $penilai = new Penilai();

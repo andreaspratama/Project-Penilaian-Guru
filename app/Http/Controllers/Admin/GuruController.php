@@ -77,7 +77,9 @@ class GuruController extends Controller
         $user->role = 'GURU';
         $user->save();
 
-        $dinilai = implode(',', $request['dinilai']);
+        $dinilai = isset($request['dinilai']) && is_array($request['dinilai']) 
+            ? implode(',', $request['dinilai']) 
+            : null; // Jika tidak ada, biarkan kosong (null)
 
         // INSERT KE TABLE PENILAI
         $guru = new Guru();

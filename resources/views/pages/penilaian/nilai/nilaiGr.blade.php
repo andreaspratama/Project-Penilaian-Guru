@@ -906,8 +906,8 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>Penggunaan LMS</td>
-                      <td>Aktif memanfaatkan dalam PBM</td>
+                      <td>Penggunaan Sisky</td>
+                      <td>Aktif memanfaatkan dalam kegiatan belajar mengajar</td>
                       <td>
                         @if ($nilaiwaka)
                           @if (auth()->user()->role == 'WAKAKUR')
@@ -1147,8 +1147,8 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>Penggunaan LMS</td>
-                      <td>Aktif memanfaatkan dalam PBM</td>
+                      <td>Penggunaan Sisky</td>
+                      <td>Aktif memanfaatkan dalam kegiatan belajar mengajar</td>
                       <td>
                         @if ($sosem)
                           @if (auth()->user()->role == 'OS')
@@ -1240,6 +1240,26 @@
                           <input type="text" class="form-control @error('kompdigProfesional') is-invalid @enderror" name="kompdigProfesional" value="{{old('kompdigProfesional'), $sosem->kompdigProfesional ?? ''}}">                    
                         @endif
                         @error('kompdigProfesional')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Komentar Untuk Guru</th>
+                      <td></td>
+                      <td>
+                        @if ($sosem)
+                          @if (auth()->user()->role == 'OS')
+                            <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Textarea content.." disabled>{{ $sosem->comment }}</textarea>
+                            {{-- <input type="text" class="form-control" name="comment" value="{{$sosem->comment}}" disabled> --}}
+                          @endif
+                        @else
+                            <textarea class="form-control @error('comment') is-invalid @enderror" id="comment" name="comment" rows="4" placeholder="Textarea content..">{{ old('comment', $sosem->comment ?? '') }}</textarea>      
+                            {{-- <input type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{old('comment'), $sosem->comment ?? ''}}">                     --}}
+                        @endif
+                        @error('comment')
                             <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                 {{ $message }}
                             </div>

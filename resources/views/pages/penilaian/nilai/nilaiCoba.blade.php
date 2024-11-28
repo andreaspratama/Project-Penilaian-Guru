@@ -131,6 +131,17 @@
                             </td>
                         </tr>
                     @endif
+                  @elseif(auth()->user()->role == 'KS')
+                    @if ($gr->unit == auth()->user()->penilai->unit)
+                      <tr>
+                        <td>{{ $no++ }}</td>
+                        <td>{{$gr->nama}}</td>
+                        <td>
+                            <a href="{{route('nilaiGr', $gr->id)}}" class="btn btn-primary">Nilai</a>
+                            <a href="{{route('nilaiGrDetailKs', $gr->id)}}" class="btn btn-warning">Detail Nilai</a>
+                        </td>
+                      </tr>
+                    @endif
                   @else
                     @if ($gr->unit == auth()->user()->penilai->unit)
                       <tr>

@@ -23,6 +23,7 @@ use App\Http\Requests\SoRequest;
 use App\Http\Requests\RkRequest;
 use App\Http\Requests\GuruRequest;
 use App\Http\Requests\DsRequest;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 
 class NilaiController extends Controller
@@ -191,6 +192,38 @@ class NilaiController extends Controller
         // $nilaiAkhir = $nilaiwaka->hasil + $nilai->hasil + $so->hasil + $rk->hasil + $ds->hasil;
 
         return view('pages.penilaian.nilai.nilaiGrDetail', compact('guru', 'nilai', 'nilaiwaka', 'so', 'rk', 'ds', 'nilaiAkhir', 'angkaNilai'));
+    }
+
+    public function nilaiGrDetailKs($id)
+    {
+        $guru = Guru::findOrFail($id);
+        $ta = Tahunajaran::where('status', 'Aktif')->get();
+        $tahasil = $ta[0]->nama;
+        $guru = Guru::findOrFail($id);
+        $nilai = Nilaiks::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $nilaiwaka = Nilaiwakakur::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $so = So::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $rk = Rk::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        $ds = Ds::where('guru_id', $guru->id)->where('ta', $tahasil)->first();
+        if ($nilaiwaka && $nilai && $so && $rk && $ds) {
+            $nilaiAkhir = ($nilai->hasil * 0.35) + ($nilaiwaka->hasil * 0.25) + ($so->hasil * 0.2) + ($rk->hasil * 0.12) + ($ds->hasil * 0.08);
+        } else {
+            $nilaiAkhir = 'Nilai belum lengkap';
+        }
+
+        if ($nilaiwaka && $nilai && $so && $rk && $ds) {
+            if ($nilaiAkhir >= 110.67) {
+                $angkaNilai = 'A';
+            } elseif ($nilaiAkhir >= 93.65) {
+                $angkaNilai = 'B';
+            } else {
+                $angkaNilai = 'C';
+            }
+        } else {
+            $angkaNilai = 'Nilai belum lengkap';
+        }
+
+        return view('pages.penilaian.nilai.nilaiGrDetailKs', compact('guru', 'nilai', 'nilaiwaka', 'so', 'rk', 'ds', 'nilaiAkhir', 'angkaNilai'));
     }
 
     public function nilaiGrEdit($id)
@@ -425,6 +458,8 @@ class NilaiController extends Controller
         $datasem->kerjasoSos = $request->kerjasoSos;
         $datasem->kompdigProfesional = $request->kompdigProfesional;
         $datasem->hasil = $hitunghasil;
+        $datasem->hasil = $hitunghasil;
+        $datasem->comment = $request->comment;
         $datasem->save();
 
         // Cek jumlah penilai
@@ -454,6 +489,7 @@ class NilaiController extends Controller
                 'kerjasoSos' => $rataRata6,
                 'kompdigProfesional' => $rataRata7,
                 'hasil' => $rataRata8,
+                'comment' =>$request->comment,
             ]);
 
             // Hapus nilai sementara setelah semua penilai selesai
@@ -738,5 +774,32 @@ class NilaiController extends Controller
 
         // Kirim hasil ke view
         return view('nilai_guru.index', compact('hasil'));
+    }
+
+    public function ubahPassword()
+    {
+        return view('pages.penilaian.nilai.ubahPassword');
+    }
+
+    public function ubahPasswordProses(Request $request)
+    {
+        // Cek password lama
+        if(!Hash::check($request->old_password, auth()->user()->password)) {
+            $request->flash();
+
+            return redirect()->back()->with('message', 'Password lama tidak sesuai')->withInput();
+        }
+
+        if($request->new_password != $request->repeatpass) {
+            $request->flash();
+            
+            return redirect()->back()->with('message', 'Password tidak sesuai')->withInput();
+        }
+
+        auth()->user()->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return redirect()->back()->with('success', 'Password sudah diubah');
     }
 }
